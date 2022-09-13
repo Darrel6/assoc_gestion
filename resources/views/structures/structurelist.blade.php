@@ -33,11 +33,11 @@
                  <tr>
                      @foreach ($structures as $structure)
                      <td> {{ $structure->id }} </td>
-                     <td> {{ $structure->nom_struct }} </td>
-                     <td>{{ $structure->email_struct }}</td>
-                     <td>{{ $structure->tel_struct }}</td>
+                     <td> {{ $structure->nom }} </td>
+                     <td>{{ $structure->email}}</td>
+                     <td>{{ $structure->tel }}</td>
                      <td>{{ $structure->domaine_activite }}</td>
-                     <td> {{ $structure->location}} </td>
+                     <td> {{ $structure->localisation}} </td>
                      <td> {{ $structure->positionnement}} </td>
                     
                      <td class="d-flex justify-content-around">

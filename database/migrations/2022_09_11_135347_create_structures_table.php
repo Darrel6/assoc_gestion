@@ -15,11 +15,11 @@ class CreateStructuresTable extends Migration
     {
         Schema::create('structures', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_struct');
-            $table->string('email_struct')->unique();
-            $table->string('tel_struct');
+            $table->string('nom');
+            $table->string('email')->unique();
+            $table->string('tel');
             $table->string('domaine_activite');
-            $table->string('location');
+            $table->string('localisation');
             $table->string('positionnement');
             $table->timestamps();
         });

@@ -15,15 +15,15 @@
         @csrf
         <div class="form-group">
           <label for="exampleInputUsername1">Nom de la Structure</label>
-          <input type="text" class="form-control" name="nom_struct" placeholder="Entrer le nom de la structure">
+          <input type="text" class="form-control" name="nom" placeholder="Entrer le nom de la structure">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Email</label>
-          <input type="email" class="form-control" name="email_struct" placeholder="Entrer l'Email">
+          <input type="email" class="form-control" name="email" placeholder="Entrer l'Email">
         </div>
         <div class="form-group">
           <label for="exampleInputUsername1">Numéro de Téléphone</label>
-          <input type="number" class="form-control" name="tel_struct" placeholder="Entrer le numero de télephone">
+          <input type="number" class="form-control" name="tel" placeholder="Entrer le numero de télephone">
         </div>
         <div class="form-group">
           <label for="exampleInputUsername1">Domaines d'Activités</label>
@@ -31,13 +31,13 @@
         </div>
         <div class="form-group">
           <label for="exampleInputUsername1">Adresse ou Localisation</label>
-          <input type="text" class="form-control" name="location" placeholder="Entrer l'adresse ou la localisation">
+          <input type="text" class="form-control" name="localisation" placeholder="Entrer l'adresse ou la localisation">
         </div>
         <div class="form-group">
           <label for="exampleSelectGender">Choisir Structure</label>
 
           <select class="form-control" id="exampleSelectGender" name="positionnement">
-              <option value="">-- -- --</option>
+              <option value="">Selectionez votre positionnement</option>
               <option value="Pré-idéation">Pré-idéation</option>
               <option value="Idéation">Idéation</option>
               <option value="Prototypage">Prototypage</option>

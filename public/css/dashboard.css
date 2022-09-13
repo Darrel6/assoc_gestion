@@ -19,7 +19,7 @@
 .form-group select{
     border:1px solid silver;
     border-radius: 5px;
-    color: black;
+    color: rgb(107, 107, 107);
 }
 .form-group select:focus{
     border: 2px solid #4386F6;

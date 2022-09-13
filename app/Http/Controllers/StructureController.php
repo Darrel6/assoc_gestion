@@ -41,20 +41,20 @@ class StructureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom_struct' => 'required',
-            'email_struct' => 'required',
-            'tel_struct' => 'required',
+            'nom' => 'required',
+            'email' => 'required',
+            'tel' => 'required',
             'domaine_activite' => 'required',
-            'location' => 'required',
+            'localisation' => 'required',
             'positionnement' => 'required',
         ]);
         
         Structure::create([
-            'nom_struct' => $request->nom_struct,
-            'email_struct' => $request->email_struct,
-            'tel_struct' => $request->tel_struct,
+            'nom' => $request->nom,
+            'email' => $request->email,
+            'tel' => $request->tel,
             'domaine_activite' =>$request->domaine_activite,
-            'location' => $request->location,
+            'localisation' => $request->localisation,
             'positionnement' => $request->positionnement,
         ]);
       
@@ -94,7 +94,18 @@ class StructureController extends Controller
      */
     public function updateStructure(Request $request, Structure $structure)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+            'email' => 'required',
+            'tel' => 'required',
+            'domaine_activite' => 'required',
+            'localisation' => 'required',
+            'positionnement' => 'required',
+        ]);
+      
+
+        $structure->update($request->all());
+        return redirect()->route('listStructure');
     }
 
     /**
