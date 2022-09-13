@@ -18,7 +18,7 @@ class StructureController extends Controller
     }
     public function add()
     {
-        return view('components.add');
+        return view('structures.add');
     }
 
     /**
@@ -70,7 +70,7 @@ class StructureController extends Controller
     public function show(Structure $structure)
     {
         $structures = Structure::orderby('id','asc')->paginate(10);
-        return view('components.structurelist', compact('structures'));
+        return view('structures.structurelist', compact('structures'));
     }
 
     /**

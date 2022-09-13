@@ -47,8 +47,8 @@
                         
                      </td>
                  </tr>
-                 @include('components.editStructure')
-                 @include('components.deleteStructure')
+                 @include('structures.editStructure')
+                 @include('structures.deleteStructure')
                 @endforeach
                      
  
