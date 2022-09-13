@@ -28,12 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/dashboard/update/{structure}', [StructureController::class, 'updateStructure'])->name("updateStructure");
     Route::delete('/dashboard/delete/{structure}', [StructureController::class, 'deleteStructure'])->name("deleteStructure");
 
-    Route::get('/dashboard/addDirigeant', [DirigeantController::class, 'add'])->name('addD');
-    Route::post('/dashboard/addDirigeant', [DirigeantController::class, 'store'])->name('addDirigeant');
-    Route::get('/dashboard/DirigeantList', [DirigeantController::class, 'show'])->name('listDirigeant');
-    Route::get('/dashboard/{dirigeant}/edit', [DirigeantController::class, 'editDirigeant'])->name("editDirigeant");
-    Route::put('/dashboard/update/{dirigeant}', [DirigeantController::class, 'updateDirigeant'])->name("updateDirigeant");
-    Route::delete('/dashboard/delete/{dirigeant}', [DirigeantController::class, 'deleteDirigeant'])->name("deleteDirigeant");
+    
 
 });
 
