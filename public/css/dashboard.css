@@ -1,0 +1,35 @@
+
+.sidebar .nav .nav-item.nav-category .nav-link {
+    
+    color: #4386F6;
+}
+.sidebar .nav .nav-item.active:not(.navbar-brand-mini-wrapper) > .nav-link i{
+    color: #4386F6;
+}
+.butt {
+    background-color: #4386F6;
+}
+.form-group input{
+    border-color: silver;
+    border-radius: 5px;
+}
+.form-group input:focus{
+    border: 2px solid #4386F6;
+}
+.form-group select{
+    border:1px solid silver;
+    border-radius: 5px;
+    color: black;
+}
+.form-group select:focus{
+    border: 2px solid #4386F6;
+}
+
+
+.content-wrapper{
+    background-color: rgba(240, 240, 240, 0.67);
+}
+.card .card-body {
+    background-color: rgba(192, 192, 192, 0.604);
+    border-radius: 10px;
+}
