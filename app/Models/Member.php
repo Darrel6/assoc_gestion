@@ -12,8 +12,13 @@ class Member extends Model
         'nom',
         'email',
         'telephone',
-        'fonction_id',
+        'fonction',
         'structure_id',
-        
+
     ];
+public function structure(){
+    
+    return $this->belongsTo(Structure::class);
+}
+
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DirigeantController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\StructureController;
 
 /*
@@ -15,21 +15,23 @@ use App\Http\Controllers\StructureController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [StructureController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard/add', [StructureController::class, 'add'])->name('add');
     Route::post('/dashboard/add', [StructureController::class, 'store'])->name('addStructure');
     Route::get('/dashboard/structureList', [StructureController::class, 'show'])->name('listStructure');
     Route::get('/dashboard/{structure}/edit', [StructureController::class, 'editStructure'])->name("editStructure");
     Route::put('/dashboard/update/{structure}', [StructureController::class, 'updateStructure'])->name("updateStructure");
     Route::delete('/dashboard/delete/{structure}', [StructureController::class, 'deleteStructure'])->name("deleteStructure");
+    //members
+    Route::resource('members', MemberController::class);
 
-    
+
 
 });
+Route::get('/', [StructureController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
+Route::fallback(function(){
+    return view('404');
+});
 require __DIR__.'/auth.php';

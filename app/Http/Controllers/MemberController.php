@@ -14,7 +14,9 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $i='';
+        $members = Member::orderBy('id','desc')->paginate();
+        return view('admin.members.index',compact('members','i'));
     }
 
     /**
@@ -24,7 +26,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.members.create');
     }
 
     /**
@@ -35,7 +37,24 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nom' =>'required',
+            'email' => 'required|unique:members|string',
+            'telephone' => 'required',
+            'fonction' => 'required',
+            'structure_id' => 'required',
+        ]);
+
+        Member::create([
+            'nom'=> $request->nom,
+            'email' => $request->email,
+            'telephone' => $request->telephone,
+            'fonction' => $request->fonction,
+            'structure_id' => $request->structure_id
+        ]);
+
+        return redirect()->route('members.index')->with('success','Membres ajouter avec succès');
+
     }
 
     /**
@@ -69,7 +88,17 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $this->validate($request,[
+            'nom' =>'required',
+            'email' => 'required|string',
+            'telephone' => 'required',
+            'fonction' => 'required',
+            'structure_id' => 'required',
+        ]);
+
+        $member->update($request->all());
+        return redirect()->route('members.index')->with('success','Information mise à jour avec succès');
+
     }
 
     /**
@@ -80,6 +109,10 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        if ($member) {
+           $member->delete();
+           return redirect()->route('members.index')->with('success','Membres supprimé avec succès');
+
+        }
     }
 }

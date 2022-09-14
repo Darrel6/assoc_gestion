@@ -9,7 +9,7 @@
     <!-- plugins:css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-       
+
 
     <link rel="stylesheet" href="{{ asset('admin/vendors/simple-line-icons/css/simple-line-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendors/flag-icon-css/css/flag-icon.min.css') }}">
@@ -39,7 +39,7 @@
                 <a class="col logo d-flex align-items-center text-decoration-none text-dark" style="cursor: pointer;"
                     href="{{ route('welcome') }}">
                     <img src="{{ asset('pictures/logo.png') }}" alt="" style="width: 160px; height:100px ; object-fit: fill">
-                    
+
                 </a>
                 <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
                         src="{{ asset('admin/images/logo-mini.svg') }}" alt="logo" /></a>
@@ -127,38 +127,38 @@
                             <span class="menu-title">Ajouter une Structure</span>
                             <i class="icon-people menu-icon"></i>
                         </a>
-                       
+
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route("addD") }}">
+                        <a class="nav-link" href="3">
                             <span class="menu-title">Ajouter un Dirigeant</span>
                             <i class="icon-user menu-icon"></i>
                         </a>
-                    </li>   
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('members.create')}}">
                             <span class="menu-title">Ajouter un membre</span>
                             <i class="icon-user-follow menu-icon"></i>
                         </a>
-                    </li>    
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">
                             <span class="menu-title">Newletters</span>
                             <i class="icon-envelope-letter menu-icon"></i>
                         </a>
-                    </li>   
+                    </li>
                     <li class="nav-item nav-category">
                         <span class="nav-link">Listes</span>
-                    </li>   
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('listStructure') }}">
                             <span class="menu-title">Listes des structures</span>
                             <i class="icon-layers menu-icon"></i>
                         </a>
-                    </li>      
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('listDirigeant') }}">
-                            <span class="menu-title">Listes des Dirigeants</span>
+                        <a class="nav-link" href="{{ route('members.index')}}">
+                            <span class="menu-title">Listes des membres</span>
                             <i class="icon-badge menu-icon"></i>
                         </a>
                     </li>
@@ -172,7 +172,7 @@
 
                     </div>
                     @yield('content')
-                   
+
 
                 </div>
 
