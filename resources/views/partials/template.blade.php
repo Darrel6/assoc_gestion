@@ -37,7 +37,7 @@
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex align-items-center py-3" style="background: white; box-shadow:1px 1px 1px rgba(192, 192, 192, 0.246)">
                 <a class="col logo d-flex align-items-center text-decoration-none text-dark" style="cursor: pointer;"
-                    href="{{ route('welcome') }}">
+                   >
                     <img src="{{ asset('pictures/logo.png') }}" alt="" style="width: 160px; height:100px ; object-fit: fill">
 
                 </a>
