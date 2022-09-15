@@ -67,7 +67,7 @@ h1{
 }
 .lab input:focus{
     outline: none;
-    border:2px solid rgba(73, 190, 73, 0.79);
+    border:2px solid #4387F6;
     
 }
 .lab label{
@@ -82,7 +82,7 @@ h1{
 }
 .button{
     margin: 10px 0 0;
-    background-color: rgba(73, 190, 73, 0.79);
+    background-color: #4387F6;
     padding: 15px 35px;
     border-radius: 10px;
     border: none;
