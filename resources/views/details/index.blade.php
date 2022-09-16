@@ -140,9 +140,8 @@ mark {
             <div class="col-lg-6">
                 <div class="about-text go-to">
                     <h3 class="dark-color">rrr</h3>
-                    <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
-                    <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
-                    <div class="row about-list">
+                    <h6 class="theme-color lead">
+                       <div class="row about-list">
                         <div class="col-md-6">
                             <div class="media">
                                 <label>Birthday</label>
