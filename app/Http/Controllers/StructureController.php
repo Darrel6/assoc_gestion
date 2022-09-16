@@ -58,7 +58,7 @@ class StructureController extends Controller
             'positionnement' => $request->positionnement,
         ]);
 
-        return redirect()->route('add');
+        return redirect()->route('add')->with('success','Structure enrégistrer avec succès');
     }
 
     /**

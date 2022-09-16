@@ -56,7 +56,7 @@ class MemberController extends Controller
             'structure_id' => $request->structure_id
         ]);
 
-        return redirect()->route('members.index')->with('success','Membres ajouter avec succès');
+        return redirect()->route('members.index')->with('success','Membre ajouté avec succès');
 
     }
 
