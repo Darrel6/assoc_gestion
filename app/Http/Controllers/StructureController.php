@@ -28,8 +28,8 @@ class StructureController extends Controller
      */
     public function create()
     {
-       
-        
+
+
     }
 
     /**
@@ -42,13 +42,13 @@ class StructureController extends Controller
     {
         $request->validate([
             'nom' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:structures',
             'tel' => 'required',
             'domaine_activite' => 'required',
             'localisation' => 'required',
             'positionnement' => 'required',
         ]);
-        
+
         Structure::create([
             'nom' => $request->nom,
             'email' => $request->email,
@@ -57,7 +57,7 @@ class StructureController extends Controller
             'localisation' => $request->localisation,
             'positionnement' => $request->positionnement,
         ]);
-      
+
         return redirect()->route('add');
     }
 
@@ -102,7 +102,7 @@ class StructureController extends Controller
             'localisation' => 'required',
             'positionnement' => 'required',
         ]);
-      
+
 
         $structure->update($request->all());
         return redirect()->route('listStructure');

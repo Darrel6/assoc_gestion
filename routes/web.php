@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActiviteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\StructureController;
@@ -25,6 +26,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::delete('/dashboard/delete/{structure}', [StructureController::class, 'deleteStructure'])->name("deleteStructure");
     //members
     Route::resource('members', MemberController::class);
+    Route::resource('activite', ActiviteController::class);
+
 
 
 

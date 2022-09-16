@@ -41,9 +41,11 @@
                     <label for="exampleSelectGender">Choisir Structure</label>
 
                     <select class="form-control" id="exampleSelectGender" name="structure_id">
-                        <option value="1">Struct</option>
-                        <option value="1">Struct</option>
-                        <option value="1">Struct</option>
+                        @foreach ($members as $member)
+                            <option value="{{$member->id}}">{{$member->nom}}</option>
+
+                        @endforeach
+
                     </select>
 
                 </div>

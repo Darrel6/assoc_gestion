@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Structure;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -26,7 +27,9 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('admin.members.create');
+        $members = Structure::all();
+
+        return view('admin.members.create',compact('members'));
     }
 
     /**

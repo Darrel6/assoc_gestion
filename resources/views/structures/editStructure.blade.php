@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleSelectGender">Choisir Structure</label>
-                          
+
                                     <select class="form-control" id="exampleSelectGender" name="positionnement">
                                         <option value="">Selectionez votre Positonnement</option>
                                         <option value="Pré-idéation">Pré-idéation</option>
@@ -52,9 +52,9 @@
                                         <option value="Prototypage">Prototypage</option>
                                         <option value="Incubation">Incubation</option>
                                         <option value="Accélération">Accélération</option>
-                                       
+
                                     </select>
-                          
+
                                 </div>
 
 
@@ -65,8 +65,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success mr-2">Submit</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success mr-2">Submit</button>
                 </div>
             </div>
         </div>
