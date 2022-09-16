@@ -41,8 +41,9 @@
                      <td> {{ $structure->positionnement}} </td>
                     
                      <td class="d-flex justify-content-around">
-                         <a href="{{ route('editStructure', $structure ) }}" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $structure->id }}" ><i class="icon-pencil menu-icon"></i></a>
-                         <a  href="{{ route('deleteStructure', $structure ) }}" class="btn btn-sm btn-danger"  data-bs-toggle="modal" data-bs-target="#exampleModalToggle{{ $structure->id }}" ><i class="icon-trash menu-icon"></i></a>
+                        <a href="{{ route('detail') }}?id={{ Crypt::encrypt($structure->id) }}" class="btn btn-sm btn-info mr-2" ><i class="icon-eye menu-icon"></i></a>
+                         <a href="{{ route('editStructure', $structure ) }}" class="btn btn-sm btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $structure->id }}" ><i class="icon-pencil menu-icon"></i></a>
+                         <a  href="{{ route('deleteStructure', $structure ) }}" class="btn btn-sm btn-danger "  data-bs-toggle="modal" data-bs-target="#exampleModalToggle{{ $structure->id }}" ><i class="icon-trash menu-icon"></i></a>
  
                         
                      </td>

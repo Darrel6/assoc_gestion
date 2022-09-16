@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\Structure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class StructureController extends Controller
 {
@@ -20,7 +22,14 @@ class StructureController extends Controller
     {
         return view('structures.add');
     }
-
+    public function detail(Request $request, Structure $structure)
+    {
+        $id = Crypt::decrypt($request->get('id'));
+        
+        $structure_membres = Member::where('structure_id',$id)->get();
+        
+        return view('details.index', compact("structure_membres"));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -28,8 +37,6 @@ class StructureController extends Controller
      */
     public function create()
     {
-       
-        
     }
 
     /**
@@ -48,16 +55,16 @@ class StructureController extends Controller
             'localisation' => 'required',
             'positionnement' => 'required',
         ]);
-        
+
         Structure::create([
             'nom' => $request->nom,
             'email' => $request->email,
             'tel' => $request->tel,
-            'domaine_activite' =>$request->domaine_activite,
+            'domaine_activite' => $request->domaine_activite,
             'localisation' => $request->localisation,
             'positionnement' => $request->positionnement,
         ]);
-      
+
         return redirect()->route('add');
     }
 
@@ -69,7 +76,7 @@ class StructureController extends Controller
      */
     public function show(Structure $structure)
     {
-        $structures = Structure::orderby('id','asc')->paginate(10);
+        $structures = Structure::orderby('id', 'asc')->paginate(10);
         return view('structures.structurelist', compact('structures'));
     }
 
@@ -82,7 +89,6 @@ class StructureController extends Controller
     public function editStructure(Structure $structure)
     {
         return view('structure', compact('structure'));
-
     }
 
     /**
@@ -102,7 +108,7 @@ class StructureController extends Controller
             'localisation' => 'required',
             'positionnement' => 'required',
         ]);
-      
+
 
         $structure->update($request->all());
         return redirect()->route('listStructure');

@@ -23,6 +23,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard/{structure}/edit', [StructureController::class, 'editStructure'])->name("editStructure");
     Route::put('/dashboard/update/{structure}', [StructureController::class, 'updateStructure'])->name("updateStructure");
     Route::delete('/dashboard/delete/{structure}', [StructureController::class, 'deleteStructure'])->name("deleteStructure");
+    Route::get('/dashboard/detail', [StructureController::class, 'detail'])->name('detail');
+
     //members
     Route::resource('members', MemberController::class);
 

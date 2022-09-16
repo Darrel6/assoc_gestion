@@ -31,7 +31,7 @@
                     <label for="exampleSelectGender">La fonction</label>
 
                     <select class="form-control" id="exampleSelectGender" name="fonction">
-                        <option value="Directeur">Directeur</option>
+                        <option value="Dirigeant">Dirigeant</option>
                         <option value="Comptable">Comptable</option>
                         <option value="Sécrétaire">Sécrétaire</option>
                     </select>

@@ -34,7 +34,7 @@
           <input type="text" class="form-control" name="localisation" placeholder="Entrer l'adresse ou la localisation">
         </div>
         <div class="form-group">
-          <label for="exampleSelectGender">Choisir Structure</label>
+          <label for="exampleSelectGender">Choisir un Positionnement</label>
 
           <select class="form-control" id="exampleSelectGender" name="positionnement">
               <option value="">Selectionez votre positionnement</option>
