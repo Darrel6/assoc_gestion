@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('page')</title>
     <!-- plugins:css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
     <link rel="stylesheet" href="{{ asset('admin/vendors/simple-line-icons/css/simple-line-icons.css') }}">
@@ -32,7 +31,35 @@
 
     <!-- select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+     <!-- sweet alert -->
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+   @if ($message = Session::get('success'))
+    <div>
+        <p>
+            <script>
+                swal("Bravo!", "{{ $message }}", "success");
+            </script>
+        </p>
+    </div>
+    @endif
+
+    <!-- message d'erreur -->
+    @if ($errors->any())
+    <div>
+        <script>
+            swal({
+                title: "Echec",
+                text: "Il y a une erreur.",
+                icon: "warning",
+                // buttons: true,
+                dangerMode: true,
+            })
+        </script>
+    </div>
+    @endif
+
 </head>
 
 <body>
@@ -40,16 +67,14 @@
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex align-items-center py-3" style="background: white; box-shadow:1px 1px 1px rgba(192, 192, 192, 0.246)">
-                <a class="col logo d-flex align-items-center text-decoration-none text-dark" style="cursor: pointer;"
-                    href="">
+                <a class="col logo d-flex align-items-center text-decoration-none text-dark" style="cursor: pointer;" href="">
                     <img src="{{ asset('pictures/logo.png') }}" alt="" style="width: 160px; height:100px ; object-fit: fill">
 
                 </a>
-                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
-                        src="{{ asset('admin/images/logo-mini.svg') }}" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('img/user.svg') }}" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1 py-3">
-                <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Bienvenue {{ auth()->user()->name }} sur votre dashboard</h5>
+                <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Bienvenu {{ auth()->user()->name }} </h5>
                 <ul class="navbar-nav navbar-nav-right ml-auto">
                     <form class="search-form d-none d-md-block" action="#">
                         <i class="icon-magnifier"></i>
@@ -58,15 +83,12 @@
 
 
                     <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
-                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
-                            aria-expanded="false">
-                            <img class="img-xs rounded-circle ml-2" src="{{ asset('admin/images/faces/face8.jpg') }}"
-                                alt="Profile image"> <span class="font-weight-normal"> {{ auth()->user()->name }}
+                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <img class="img-xs rounded-circle ml-2" src="{{ asset('img/user.svg') }}" alt="Profile image"> <span class="font-weight-normal"> {{ auth()->user()->name }}
                             </span></a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="{{ asset('admin/images/faces/face8.jpg') }}"
-                                    alt="Profile image">
+                                <img class="img-md rounded-circle" src="{{ asset('img/user.svg') }}" alt="Profile image">
                                 <p class="mb-1 mt-3">{{ auth()->user()->name }}</p>
                                 <p class="font-weight-light text-muted mb-0">{{ auth()->user()->email }}</p>
                             </div>
@@ -76,20 +98,17 @@
 
                                     @csrf
 
-                                    <x-responsive-nav-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                        this.closest('form').submit();"
-                                        class=" text-decoration-none ">
+                                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                        this.closest('form').submit();" class=" text-decoration-none ">
                                         <i class="dropdown-item-icon icon-power text-primary"></i>
-                                        {{ __('Log Out') }}
+                                        {{ __('Déconnexion') }}
                                     </x-responsive-nav-link>
                                 </form>
                             </a>
                         </div>
                     </li>
                 </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                    data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="icon-menu"></span>
                 </button>
             </div>
@@ -102,8 +121,7 @@
                     <li class="nav-item nav-profile">
                         <a href="#" class="nav-link">
                             <div class="profile-image">
-                                <img class="img-xs rounded-circle" src="{{ asset('admin/images/faces/face8.jpg') }}"
-                                    alt="profile image">
+                                <img class="img-xs rounded-circle" src="{{ asset('img/user.svg') }}" alt="profile image">
                                 <div class="dot-indicator bg-success"></div>
                             </div>
                             <div class="text-wrapper">
@@ -127,7 +145,7 @@
                     </li>
                     <li class="nav-item nav-category"><span class="nav-link">Operations</span></li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="{{ route('add') }}">
+                        <a class="nav-link" href="{{ route('add') }}">
                             <span class="menu-title">Ajouter une Structure</span>
                             <i class="icon-people menu-icon"></i>
                         </a>
@@ -197,8 +215,7 @@
             </div>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
     <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
     <script src="{{ asset('admin/vendors/select2/select2.min.js') }}"></script>

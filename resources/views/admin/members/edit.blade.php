@@ -41,7 +41,7 @@
 
                                     <select class="form-control" id="exampleSelectGender" name="structure_id">
                                         @foreach ($members as $member)
-                                        <option value=" {{$member->structure->id}}">{{$member->structure->nom}}</option>
+                                        <option value="{{$member->structure->nom}}">{{$member->structure->nom}}</option>
                                         @endforeach
 
                                     </select>
