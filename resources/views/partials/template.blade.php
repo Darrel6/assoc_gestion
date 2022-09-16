@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}" />
     <link rel="shortcut icon" href="{{ asset('pictures/favi.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
+
+    <!-- select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -37,7 +41,7 @@
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex align-items-center py-3" style="background: white; box-shadow:1px 1px 1px rgba(192, 192, 192, 0.246)">
                 <a class="col logo d-flex align-items-center text-decoration-none text-dark" style="cursor: pointer;"
-                   >
+                    href="">
                     <img src="{{ asset('pictures/logo.png') }}" alt="" style="width: 160px; height:100px ; object-fit: fill">
 
                 </a>
@@ -130,8 +134,8 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="3">
-                            <span class="menu-title">Ajouter un Dirigeant</span>
+                        <a class="nav-link" href="{{ route('activite.create')}}">
+                            <span class="menu-title">Ajouter une activité</span>
                             <i class="icon-user menu-icon"></i>
                         </a>
                     </li>
@@ -159,6 +163,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('members.index')}}">
                             <span class="menu-title">Listes des membres</span>
+                            <i class="icon-badge menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('activite.index')}}">
+                            <span class="menu-title">Listes des activités</span>
                             <i class="icon-badge menu-icon"></i>
                         </a>
                     </li>

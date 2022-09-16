@@ -18,8 +18,11 @@ class Structure extends Model
         'localisation',
         'positionnement'
     ];
-    public function dirigeant()
-    {
-        return $this->hasOne(Dirigeant::class,);
+
+
+    public function activites(){
+        
+        return $this->hasMany(Activite::class);
     }
 }
+

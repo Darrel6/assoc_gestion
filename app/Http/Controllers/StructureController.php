@@ -25,9 +25,9 @@ class StructureController extends Controller
     public function detail(Request $request, Structure $structure)
     {
         $id = Crypt::decrypt($request->get('id'));
-        
+
         $structure_membres = Member::where('structure_id',$id)->get();
-        
+
         return view('details.index', compact("structure_membres"));
     }
     /**
@@ -37,6 +37,8 @@ class StructureController extends Controller
      */
     public function create()
     {
+
+
     }
 
     /**
@@ -49,7 +51,7 @@ class StructureController extends Controller
     {
         $request->validate([
             'nom' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:structures',
             'tel' => 'required',
             'domaine_activite' => 'required',
             'localisation' => 'required',
