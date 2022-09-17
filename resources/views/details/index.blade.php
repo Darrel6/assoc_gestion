@@ -5,7 +5,7 @@
 fedSAEI - Details
 @endsection
 @section('title')
-Details sur la Structures
+Details sur la Structure
 @endsection
 
 <section class="section about-section gray-bg" id="about">
@@ -25,19 +25,15 @@ Details sur la Structures
                             <div class="col-md-6">
                                 <div class="media">
                                     <label>Nom</label>
-                                    <p>info@domain.com</p>
+                                    <p>{{$dirigeant->nom}}</p>
                                 </div>
                                 <div class="media">
-                                    <label>Telephone</label>
-                                    <p>820-885-3321</p>
+                                    <label>Phone</label>
+                                    <p>{{$dirigeant->telephone}}</p>
                                 </div>
                                 <div class="media">
-                                    <label>Skype</label>
-                                    <p>skype.0404</p>
-                                </div>
-                                <div class="media">
-                                    <label>Freelance</label>
-                                    <p>Available</p>
+                                    <label>E-mail</label>
+                                    <p>{{$dirigeant->email}}</p>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +60,7 @@ Details sur la Structures
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
                         <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                        <p class="m-0px font-w-600">Structures</p>
+                        <p class="m-0px font-w-600">Activités</p>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
@@ -99,21 +95,22 @@ Details sur la Structures
             </thead>
             <tbody>
                 <tr>
-                    @foreach ($structure_membres as $structure)
+                    @foreach ($structure_membres as $member)
                     <td>{{++$i}}</td>
-                    <td> {{ $structure->nom }} </td>
-                    <td>{{ $structure->email}}</td>
-                    <td>{{ $structure->telephone }}</td>
-                    <td>{{ $structure->fonction }}</td>
+                    <td> {{ $member->nom }} </td>
+                    <td>{{ $member->email}}</td>
+                    <td>{{ $member->telephone }}</td>
+                    <td>{{ $member->fonction }}</td>
 
                     <td class="d-flex justify-content-around">
-                        <a href="{{ route('detail') }}?id={{ Crypt::encrypt($structure->id) }}" class="btn btn-sm btn-info mr-2"><i class="icon-eye menu-icon"></i></a>
-                        <a href="{{ route('editStructure', $structure ) }}" class="btn btn-sm btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $structure->id }}"><i class="icon-pencil menu-icon"></i></a>
-                        <a href="{{ route('deleteStructure', $structure ) }}" class="btn btn-sm btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModalToggle{{ $structure->id }}"><i class="icon-trash menu-icon"></i></a>
+                    <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalUpdate{{ $member->id }}" ><i class="icon-pencil menu-icon"></i></a>
+                         <a  href="" class="btn btn-sm btn-danger" title="Supprimer" data-toggle="modal" data-target="#modalDelete{{ $member->id }}" ><i class="icon-trash menu-icon"></i></a>
 
 
                     </td>
                 </tr>
+                @include('admin.members.delete')
+                 @include('admin.members.edit')
                 @endforeach
 
 

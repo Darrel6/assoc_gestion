@@ -26,11 +26,12 @@ class StructureController extends Controller
     {
         $i='';
         $id = Crypt::decrypt($request->get('id'));
+        $members = Member::orderBy('id','desc')->paginate();
 
         $structure_membres = Member::where('structure_id',$id)->paginate();
         $structures = Structure::where('id',$id)->get();
 
-        return view('details.index', compact("structure_membres","i","structures"));
+        return view('details.index', compact("structure_membres","i","structures","members"));
     }
     /**
      * Show the form for creating a new resource.
