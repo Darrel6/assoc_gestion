@@ -12,6 +12,10 @@
     .table thead th {
         font-weight: bold;
     }
+    .modal-dialog {
+    max-width: 75%;
+    margin: 30px auto;
+}
 </style>
 <div class="card mb-5" style="border-radius: 10px">
     <div class="card-body">
@@ -56,7 +60,7 @@
                                 class="btn btn-sm btn-info mr-2"><i class="icon-eye menu-icon hover-shadow"
                                     onclick="openModal();currentSlide(1)"></i></a>
                         </td>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -71,6 +75,7 @@
                                             <div class="carousel-inner">
                                                 @foreach ($activite['visuel'] as $visuel)
                                                     <div class="carousel-item active">
+                                                        
                                                         <img class="d-block w-100" src="{{ $visuel }}">
                                                     </div>
                                                 @endforeach
