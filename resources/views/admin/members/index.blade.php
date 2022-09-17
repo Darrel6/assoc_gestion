@@ -37,7 +37,6 @@
                      <td>{{ $member->telephone }}</td>
                      <td>{{ $member->fonction }}</td>
                      <td> {{ $member->structure->nom}} </td>
-
                      <td class="d-flex justify-content-around">
                          <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalUpdate{{ $member->id }}" ><i class="icon-pencil menu-icon"></i></a>
                          <a  href="" class="btn btn-sm btn-danger" title="Supprimer" data-toggle="modal" data-target="#modalDelete{{ $member->id }}" ><i class="icon-trash menu-icon"></i></a>
