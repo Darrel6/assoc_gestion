@@ -15,37 +15,47 @@ class ActiviteController extends Controller
      */
     public function index()
     {
-        $i = '';
+        $i = 0;
         $act = Activite::all();
         $activites = [];
-        $structure =[];
         foreach($act as $activity){
-            $sId = $activity->structure_id;
-            $sIdDecode = json_decode($sId);
+            $sIdDecode = json_decode($activity->structure_id);
 
-            $allActivities = [];
-                foreach ($sIdDecode as $id) {
-                    $getStructure = Structure::where(["id"=>$id])->get();
-                    array_push($structure,$getStructure);
-
+            $st = [];
+            foreach ($sIdDecode as $sId) {
+                $getStructure = Structure::where(["id"=>$sId])->get('nom');
+                if($getStructure->count()>0){
+                    $data = [];
+                    foreach($getStructure as $sName){
+                        $name = $sName['nom'];
+                        if($name){
+                            array_push($data, $name);
+                        }
+                    }
+                    array_push($st,$data);
                 }
+            } 
 
-                if($structure){
-                    $msg = [
-                        "nameStructure"=>$structure,
-                        "idact"=>$act[0]->id,
-                        "date"=>$act[0]->date_event,
-                        "activity"=> $act[0]->nom,
-                        "visuel"=>$act[0]->visuel,
-                        "lieu" =>$act[0]->lieu,
-                        "description" => $act[0]->description
-                    ];
-                    array_push($allActivities, $msg);
+            $r = [];
+            if($st){
+                foreach($st as $i){
+                    array_push($r, $i[0]);
                 }
+            }
+            
 
-            $activites = $allActivities;
+            $msg = [
+                "nom" => $activity->nom,
+                "date_event"=>$activity->date_event,
+                "lieu" => $activity->lieu,
+                "structures" => $r,
+                "visuel" =>json_decode($activity->visuel)
+            ]; 
+           
+            array_push($activites, $msg);
 
         }
+       // dd($activites);
 
 
         return view('admin.activite.index', compact('activites', 'i'))->with('success','Activité ajoutée avec succès');

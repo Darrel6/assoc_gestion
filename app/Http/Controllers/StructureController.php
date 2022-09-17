@@ -23,12 +23,17 @@ class StructureController extends Controller
         return view('structures.add');
     }
     public function detail(Request $request, Structure $structure)
+    
     {
+        $i = '';
+        
         $id = Crypt::decrypt($request->get('id'));
 
-        $structure_membres = Member::where('structure_id',$id)->get();
+        $structure_membres = Member::where('structure_id',$id)->paginate(10);
+        $structure_membres->appends(['id'=>$id])->render();
+        $structure_info = Structure::where('id',$id)->paginate(10);
 
-        return view('details.index', compact("structure_membres"));
+        return view('details.index', compact("structure_membres","i","structure_info"));
     }
     /**
      * Show the form for creating a new resource.
