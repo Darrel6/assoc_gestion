@@ -13,7 +13,7 @@ Details sur la Structure
         <div class="row align-items-center flex-row-reverse">
             <div class="col-lg-10 p-0 m-0">
                 <div class="about-text go-to">
-                    @foreach ($structure_info as $structure)
+                    @foreach ($structures as $structure)
                     <h3 class="dark-color">{{$structure->nom}}</h3>
                     @endforeach
 
@@ -43,7 +43,7 @@ Details sur la Structure
 
                 </div>
             </div>
-            
+
         </div>
         <div class="counter">
             <div class="row">
