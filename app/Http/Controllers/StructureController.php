@@ -28,6 +28,7 @@ class StructureController extends Controller
         $i = '';
         
         $id = Crypt::decrypt($request->get('id'));
+        $members = Member::orderBy('id','desc')->paginate(10);
 
         $structure_membres = Member::where('structure_id',$id)->paginate(10);
         $structure_membres->appends(['id'=>$id])->render();
@@ -55,7 +56,7 @@ class StructureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => 'required',
+            'nom' => 'required|unique:structures',
             'email' => 'required|unique:structures',
             'tel' => 'required',
             'domaine_activite' => 'required',
