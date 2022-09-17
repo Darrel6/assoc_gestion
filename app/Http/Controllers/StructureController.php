@@ -24,11 +24,13 @@ class StructureController extends Controller
     }
     public function detail(Request $request, Structure $structure)
     {
+        $i='';
         $id = Crypt::decrypt($request->get('id'));
 
-        $structure_membres = Member::where('structure_id',$id)->get();
+        $structure_membres = Member::where('structure_id',$id)->paginate();
+        $structures = Structure::where('id',$id)->get();
 
-        return view('details.index', compact("structure_membres"));
+        return view('details.index', compact("structure_membres","i","structures"));
     }
     /**
      * Show the form for creating a new resource.
@@ -50,7 +52,7 @@ class StructureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => 'required',
+            'nom' => 'required|unique:structures',
             'email' => 'required|unique:structures',
             'tel' => 'required',
             'domaine_activite' => 'required',
