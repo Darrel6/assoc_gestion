@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activite;
 use App\Models\Member;
 use App\Models\Structure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use PhpParser\Node\Stmt\Foreach_;
 
 class StructureController extends Controller
 {
@@ -33,7 +35,80 @@ class StructureController extends Controller
         $structure_membres->appends(['id'=>$id])->render();
         $structures = Structure::where('id',$id)->get();
 
-        return view('details.index', compact("structure_membres","i","structures","members"));
+
+
+        /* $structure = Structure::where('id',$id)->get();
+
+        foreach ($structure as $strure) {
+            $active = Activite::all();
+
+            foreach ($active as $active) {
+                $structDecode = json_decode($active->structure_id);
+                foreach ($structDecode as $decod) {
+                   $nomb = Activite::where('structure_id',$decod)->get();
+                   dd($nomb);
+                }
+            }
+
+        }
+ */
+
+        $i = 0;
+        $act = Activite::all();
+        $activites = [];
+        foreach($act as $activity){
+            $sIdDecode = json_decode($activity->structure_id);
+
+            $st = [];
+            foreach ($sIdDecode as $sId) {
+                $getStructure = Structure::where(["id"=>$sId])->get('id');
+
+                if($getStructure->count()>0){
+                    $data = [];
+                    foreach($getStructure as $sName){
+                        $name = $sName['id'];
+                        if($name){
+                            array_push($data, $name);
+                        }
+                    }
+                    array_push($st,$data);
+                }
+            }
+
+            $r = [];
+            if($st){
+                foreach($st as $i){
+                    array_push($r, $i[0]);
+                }
+            }
+
+
+            $msg = [
+                "nom" => $activity->nom,
+                "date_event"=>$activity->date_event,
+                "lieu" => $activity->lieu,
+                "structures" => $r,
+                "visuel" =>json_decode($activity->visuel)
+            ];
+
+            array_push($activites, $msg);
+
+        }
+        $nbrActivite = [];
+        foreach ($activites as $act) {
+            foreach ($act['structures'] as $struc) {
+                if ($struc == $id) {
+                    array_push($nbrActivite , $act);
+               }
+            }
+        }
+        
+
+
+
+
+
+        return view('details.index', compact("structure_membres","i","structures","members",'nbrActivite'));
     }
     /**
      * Show the form for creating a new resource.

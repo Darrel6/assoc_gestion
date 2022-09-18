@@ -55,7 +55,8 @@ Details sur la Structure
                 </div>
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                        <h6 data-toggle="modal" data-target="#exampleModal" class="count h2" data-to="150" data-speed="150">{{count($nbrActivite)}}</h6>
+                        
                         <p class="m-0px font-w-600">Activités</p>
                     </div>
                 </div>
