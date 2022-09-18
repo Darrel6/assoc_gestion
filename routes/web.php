@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::put('/dashboard/update/{structure}', [StructureController::class, 'updateStructure'])->name("updateStructure");
     Route::delete('/dashboard/delete/{structure}', [StructureController::class, 'deleteStructure'])->name("deleteStructure");
     Route::get('/dashboard/detail', [StructureController::class, 'detail'])->name('detail');
+    Route::get('/dashboard/detail/activity', [StructureController::class, 'detailActivity'])->name('detailActivity');
 
     //members
     Route::resource('members', MemberController::class);

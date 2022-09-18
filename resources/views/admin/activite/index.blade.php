@@ -5,17 +5,18 @@
     fedSAEI - Activité
 @endsection
 @section('title')
-    Ajout de activites
+    Listes des Activités
 @endsection
 
 <style>
     .table thead th {
         font-weight: bold;
     }
+
     .modal-dialog {
-    max-width: 75%;
-    margin: 30px auto;
-}
+        max-width: 75%;
+        margin: 30px auto;
+    }
 </style>
 <div class="card mb-5" style="border-radius: 10px">
     <div class="card-body">
@@ -27,8 +28,9 @@
                     <th>Date de l'évenement</th>
                     <th>Lieu de l'évenement</th>
                     <th>Les structures</th>
-                    <th>Audios et vidéos de </th>
+                    <th>Visuels </th>
                     <th>Description</th>
+                    <th>Actions</th>
 
                 </tr>
             </thead>
@@ -49,16 +51,15 @@
                                     @endforeach
                                 </ul>
                             @else
-                                <span class="badge rounded-pill bg-primary">
+                                <span class="badge rounded-pill bg-secondary">
                                     Bientot disponible
                                 </span>
                             @endif
                         </td>
-
+                        
                         <td>
                             <a href="" data-toggle="modal" data-target="#exampleModal"
-                                class="btn btn-sm btn-info mr-2"><i class="icon-eye menu-icon hover-shadow"
-                                    onclick="openModal();currentSlide(1)"></i></a>
+                                class="btn btn-sm btn-info mr-2"><i class="icon-eye menu-icon hover-shadow"></i></a>
                         </td>
                         <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -75,7 +76,7 @@
                                             <div class="carousel-inner">
                                                 @foreach ($activite['visuel'] as $visuel)
                                                     <div class="carousel-item active">
-                                                        
+
                                                         <img class="d-block w-100" src="{{ $visuel }}">
                                                     </div>
                                                 @endforeach
@@ -101,7 +102,9 @@
                             </div>
                         </div>
 
-                        <td></td>
+                        <td>
+                            {{ $activite['description'] }}
+                        </td>
 
                         <td class="d-flex justify-content-around">
                             <a href="" class="btn btn-sm btn-primary" data-toggle="modal"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activite;
 use App\Models\Member;
 use App\Models\Structure;
 use Illuminate\Http\Request;
@@ -32,8 +33,65 @@ class StructureController extends Controller
         $structure_membres = Member::where('structure_id',$id)->paginate(10);
         $structure_membres->appends(['id'=>$id])->render();
         $structures = Structure::where('id',$id)->get();
+       
+        
 
         return view('details.index', compact("structure_membres","i","structures","members"));
+    }
+    public function detailActivity(Request $request,Activite $activite )
+    {
+        $i='';
+        $id = Crypt::decrypt($request->get('id'));
+        $structure_membres = Member::where('structure_id',$id)->paginate(10);
+       
+        $structures = Structure::where('id',$id)->get();
+       
+       
+    
+        
+        $act = Activite::all();
+        $activity_info = [];
+        foreach($act as $activity){
+            $sIdDecode = json_decode($activity->structure_id);
+
+            $st = [];
+            foreach ($sIdDecode as $sId) {
+                $getStructure = Structure::where(["id"=>$sId])->get('nom');
+                if($getStructure->count()>0){
+                    $data = [];
+                    foreach($getStructure as $sName){
+                        $name = $sName['nom'];
+                        if($name){
+                            array_push($data, $name);
+                        }
+                    }
+                    array_push($st,$data);
+                }
+            } 
+
+            $r = [];
+            if($st){
+                foreach($st as $i){
+                    array_push($r, $i[0]);
+                }
+            }
+            
+
+            $msg = [
+                'id'=>$activity->id,
+                "nom" => $activity->nom,
+                "date_event"=>$activity->date_event,
+                "lieu" => $activity->lieu,
+                "description" => $activity->description,
+                "structures" => $r,
+                "visuel" =>json_decode($activity->visuel)
+            ]; 
+           
+            array_push($activity_info, $msg);
+
+        }
+        
+        return view('details.activity', compact("activity_info","i","structure_membres","structures"));
     }
     /**
      * Show the form for creating a new resource.

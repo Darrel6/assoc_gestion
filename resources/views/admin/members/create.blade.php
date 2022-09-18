@@ -34,6 +34,7 @@
                         <option value="Dirigeant">Dirigeant</option>
                         <option value="Comptable">Comptable</option>
                         <option value="Sécrétaire">Sécrétaire</option>
+                        <option value="Représentant">Représentant</option>
                     </select>
 
                 </div>

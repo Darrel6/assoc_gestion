@@ -49,7 +49,8 @@ class ActiviteController extends Controller
                 "date_event"=>$activity->date_event,
                 "lieu" => $activity->lieu,
                 "structures" => $r,
-                "visuel" =>json_decode($activity->visuel)
+                "visuel" =>json_decode($activity->visuel),
+                "description" => $activity->description,
             ]; 
            
             array_push($activites, $msg);
