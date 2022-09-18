@@ -2,10 +2,10 @@
 
 @section('content')
 @section('page')
-    fedSAEI | Ajout de Dirigeants
+    fedSAEI | Ajout d'Activités
 @endsection
 @section('title')
-    Ajout de membres
+    Ajout  d'Activités
 @endsection
 
 <div class="col-md-9 grid-margin stretch-card m-auto mb-8">

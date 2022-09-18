@@ -2,10 +2,10 @@
 
 @section('content')
 @section('page')
-   fedSAEI - Ajout de structure
+   fedSAEI - Liste des structures
 @endsection
 @section('title')
-  Ajout de Structures
+ Liste des Structures
 @endsection
 
 <style>

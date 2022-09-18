@@ -10,8 +10,12 @@
 
 
 <style>
-    em {
-        color: #4387F6
+    .dark-color{
+        text-decoration: underline
+    }
+ .dark-color  em {
+        color: #4387F6;
+        text-decoration: none
     }
 </style>
 <div class="container">

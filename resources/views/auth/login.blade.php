@@ -67,7 +67,7 @@
                     @endif
     
                     <x-button class="button">
-                        {{ __('Log in') }}
+                        {{ __('Connexion') }}
                     </x-button>
                 </div>
             </div>

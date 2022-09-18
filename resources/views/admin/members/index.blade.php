@@ -2,10 +2,10 @@
 
 @section('content')
 @section('page')
-   fedSAEI - Ajout de member
+   fedSAEI - Liste des membres
 @endsection
 @section('title')
-  Ajout de members
+    Liste des  membres
 @endsection
 
 <style>
