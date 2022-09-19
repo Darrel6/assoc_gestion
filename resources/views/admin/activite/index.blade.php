@@ -29,6 +29,7 @@ Ajout de activites
                 </tr>
             </thead>
             <tbody>
+                @if (count($activites) > 0)
                 @foreach ($activites as $activite)
                 <tr>
 
@@ -61,7 +62,9 @@ Ajout de activites
                     </td>
                 </tr>
                 @endforeach
-
+                @else
+                <td colspan="7">Aucune activité</td>
+                @endif
 
 
             </tbody>

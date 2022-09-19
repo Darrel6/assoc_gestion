@@ -31,6 +31,9 @@
              </thead>
              <tbody>
                  <tr>
+                    @if ($structures->count() > 0)
+
+
                      @foreach ($structures as $structure)
                      <td> {{ $structure->id }} </td>
                      <td> {{ $structure->nom }} </td>
@@ -51,7 +54,9 @@
                  @include('structures.editStructure')
                  @include('structures.deleteStructure')
                 @endforeach
-
+                @else
+                <td colspan="8">Aucune structure</td>
+                @endif
 
              </tbody>
          </table>
