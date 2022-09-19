@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fonction;
 use App\Models\Member;
 use App\Models\Structure;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class MemberController extends Controller
     {
         $i='';
         $members = Member::orderBy('id','desc')->paginate();
-        return view('admin.members.index',compact('members','i'));
+        $fonctions = Fonction::all();
+        return view('admin.members.index',compact('members','i','fonctions'));
     }
 
     /**
@@ -28,8 +30,9 @@ class MemberController extends Controller
     public function create()
     {
         $members = Structure::all();
+        $fonctions = Fonction::all();
 
-        return view('admin.members.create',compact('members'));
+        return view('admin.members.create',compact('members',"fonctions"));
     }
 
     /**
@@ -44,7 +47,7 @@ class MemberController extends Controller
             'nom' =>'required',
             'email' => 'required|unique:members|string',
             'telephone' => 'required',
-            'fonction' => 'required',
+            'fonction_id' => 'required',
             'structure_id' => 'required',
         ]);
 
@@ -52,7 +55,7 @@ class MemberController extends Controller
             'nom'=> $request->nom,
             'email' => $request->email,
             'telephone' => $request->telephone,
-            'fonction' => $request->fonction,
+            'fonction_id' => $request->fonction_id,
             'structure_id' => $request->structure_id
         ]);
 
@@ -95,7 +98,7 @@ class MemberController extends Controller
             'nom' =>'required',
             'email' => 'required|string',
             'telephone' => 'required',
-            'fonction' => 'required',
+            'fonction_id' => 'required',
             'structure_id' => 'required',
         ]);
 

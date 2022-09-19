@@ -7,6 +7,7 @@ use App\Models\Member;
 use App\Models\Structure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use PhpParser\Node\Stmt\Foreach_;
 
 class StructureController extends Controller
 {
@@ -36,7 +37,81 @@ class StructureController extends Controller
        
         
 
-        return view('details.index', compact("structure_membres","i","structures","members"));
+
+
+        /* $structure = Structure::where('id',$id)->get();
+
+        foreach ($structure as $strure) {
+            $active = Activite::all();
+
+            foreach ($active as $active) {
+                $structDecode = json_decode($active->structure_id);
+                foreach ($structDecode as $decod) {
+                   $nomb = Activite::where('structure_id',$decod)->get();
+                   dd($nomb);
+                }
+            }
+
+        }
+ */
+
+        $i = 0;
+        $num = '';
+        $act = Activite::all();
+        $activites = [];
+        foreach($act as $activity){
+            $sIdDecode = json_decode($activity->structure_id);
+
+            $st = [];
+            foreach ($sIdDecode as $sId) {
+                $getStructure = Structure::where(["id"=>$sId])->get('id');
+
+                if($getStructure->count()>0){
+                    $data = [];
+                    foreach($getStructure as $sName){
+                        $name = $sName['id'];
+                        if($name){
+                            array_push($data, $name);
+                        }
+                    }
+                    array_push($st,$data);
+                }
+            }
+
+            $r = [];
+            if($st){
+                foreach($st as $i){
+                    array_push($r, $i[0]);
+                }
+            }
+
+
+            $msg = [
+                "nom" => $activity->nom,
+                "date_event"=>$activity->date_event,
+                "lieu" => $activity->lieu,
+                "structures" => $r,
+                "visuel" =>json_decode($activity->visuel)
+            ];
+
+            array_push($activites, $msg);
+
+        }
+        $nbrActivite = [];
+        foreach ($activites as $act) {
+            foreach ($act['structures'] as $struc) {
+                if ($struc == $id) {
+                    array_push($nbrActivite , $act);
+               }
+            }
+        }
+        
+
+
+
+
+
+        return view('details.index', compact("structure_membres","i",'num',"structures","members",'nbrActivite'));
     }
     public function detailActivity(Request $request,Activite $activite )
     {
@@ -48,26 +123,28 @@ class StructureController extends Controller
        
        
     
-        
+        $num = ''; 
+        $i = 0;
         $act = Activite::all();
-        $activity_info = [];
+        $activites = [];
         foreach($act as $activity){
             $sIdDecode = json_decode($activity->structure_id);
 
             $st = [];
             foreach ($sIdDecode as $sId) {
-                $getStructure = Structure::where(["id"=>$sId])->get('nom');
+                $getStructure = Structure::where(["id"=>$sId])->get('id');
+
                 if($getStructure->count()>0){
                     $data = [];
                     foreach($getStructure as $sName){
-                        $name = $sName['nom'];
+                        $name = $sName['id'];
                         if($name){
                             array_push($data, $name);
                         }
                     }
                     array_push($st,$data);
                 }
-            } 
+            }
 
             $r = [];
             if($st){
@@ -75,23 +152,32 @@ class StructureController extends Controller
                     array_push($r, $i[0]);
                 }
             }
-            
+
 
             $msg = [
-                'id'=>$activity->id,
+               
                 "nom" => $activity->nom,
                 "date_event"=>$activity->date_event,
                 "lieu" => $activity->lieu,
-                "description" => $activity->description,
                 "structures" => $r,
-                "visuel" =>json_decode($activity->visuel)
-            ]; 
-           
-            array_push($activity_info, $msg);
+                "visuel" =>json_decode($activity->visuel),
+                "description" =>$activity->description
+            ];
+
+            array_push($activites, $msg);
 
         }
+        $activity_info = [];
+        foreach ($activites as $act) {
+            foreach ($act['structures'] as $struc) {
+                if ($struc == $id) {
+                    array_push($activity_info , $act);
+               }
+            }
+        }
         
-        return view('details.activity', compact("activity_info","i","structure_membres","structures"));
+        
+        return view('details.activity', compact("activity_info","num","structure_membres","structures"));
     }
     /**
      * Show the form for creating a new resource.
@@ -112,7 +198,7 @@ class StructureController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $result = $request->validate([
             'nom' => 'required|unique:structures',
             'email' => 'required|unique:structures',
             'tel' => 'required',
@@ -120,16 +206,16 @@ class StructureController extends Controller
             'localisation' => 'required',
             'positionnement' => 'required',
         ]);
-
+     
         Structure::create([
             'nom' => $request->nom,
             'email' => $request->email,
             'tel' => $request->tel,
             'domaine_activite' => $request->domaine_activite,
             'localisation' => $request->localisation,
-            'positionnement' => $request->positionnement,
+            'positionnement' => json_encode($request->positionnement),
         ]);
-
+        
         return redirect()->route('add')->with('success','Structure enrégistrer avec succès');
     }
 
@@ -142,7 +228,11 @@ class StructureController extends Controller
     public function show(Structure $structure)
     {
         $structures = Structure::orderby('id', 'asc')->paginate(10);
-        return view('structures.structurelist', compact('structures'));
+        foreach($structures as $structure){
+            $position = json_decode($structure->positionnement);
+            
+        }
+        return view('structures.structurelist', compact('structures','position'));
     }
 
     /**

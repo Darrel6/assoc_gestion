@@ -36,7 +36,7 @@
         <div class="form-group">
           <label for="exampleSelectGender">Choisir un Positionnement</label>
 
-          <select class="form-control" id="exampleSelectGender" name="positionnement">
+          <select multiple="multiple" class="js-example-basic-multiple  form-control" id="exampleSelectGender"  name="positionnement[]">
               <option value="">Selectionez votre positionnement</option>
               <option value="Pré-idéation">Pré-idéation</option>
               <option value="Idéation">Idéation</option>

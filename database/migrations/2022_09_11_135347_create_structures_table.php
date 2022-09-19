@@ -20,7 +20,7 @@ class CreateStructuresTable extends Migration
             $table->string('tel');
             $table->string('domaine_activite');
             $table->string('localisation');
-            $table->string('positionnement');
+            $table->json('positionnement');
             $table->timestamps();
         });
     }

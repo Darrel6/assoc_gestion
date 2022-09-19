@@ -14,7 +14,7 @@ class FonctionController extends Controller
      */
     public function index()
     {
-        //
+        return view("fonction.create");
     }
 
     /**
@@ -35,7 +35,16 @@ class FonctionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nom' => 'required',
+        ]);
+
+        
+        Fonction::create([
+            'nom' => $request->nom,
+        ]);
+
+        return redirect()->route('fonctionView')->with('success','Fonction enrégistrer avec succès');
     }
 
     /**

@@ -35,7 +35,7 @@
                      <td> {{ $member->nom }} </td>
                      <td>{{ $member->email }}</td>
                      <td>{{ $member->telephone }}</td>
-                     <td>{{ $member->fonction }}</td>
+                     <td>{{ $member->fonction->nom }}</td>
                      <td> {{ $member->structure->nom}} </td>
                      <td class="d-flex justify-content-around">
                          <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalUpdate{{ $member->id }}" ><i class="icon-pencil menu-icon"></i></a>

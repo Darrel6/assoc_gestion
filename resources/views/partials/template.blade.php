@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}" />
     <link rel="shortcut icon" href="{{ asset('pictures/favi.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
+    <link rel="stylesheet" href="libs/fancybox/css/jquery.fancybox.min.css">
 
     <!-- select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -165,8 +166,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <span class="menu-title">Newletters</span>
+                        <a class="nav-link" href="{{ route('fonctionView') }}">
+                            <span class="menu-title">Ajouter une Fonction</span>
                             <i class="icon-envelope-letter menu-icon"></i>
                         </a>
                     </li>
@@ -225,6 +226,7 @@
     <script src="{{ asset('admin/js/misc.js') }}"></script>
     <script src="{{ asset('admin/js/typeahead.js') }}"></script>
     <script src="{{ asset('admin/js/select2.js') }}"></script>
+    <script src="libs/fancybox/js/jquery.fancybox.min.js"></script>
 
 </body>
 

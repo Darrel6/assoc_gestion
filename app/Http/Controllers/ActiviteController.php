@@ -45,6 +45,7 @@ class ActiviteController extends Controller
             
 
             $msg = [
+                "idact"=>$activity->id,
                 "nom" => $activity->nom,
                 "date_event"=>$activity->date_event,
                 "lieu" => $activity->lieu,
@@ -56,10 +57,11 @@ class ActiviteController extends Controller
             array_push($activites, $msg);
 
         }
+        $structures = Structure::all();
        // dd($activites);
 
 
-        return view('admin.activite.index', compact('activites', 'i'))->with('success','Activité ajoutée avec succès');
+        return view('admin.activite.index', compact('activites', 'i','structures'))->with('success','Activité ajoutée avec succès');
     }
 
     /**
@@ -136,7 +138,7 @@ class ActiviteController extends Controller
      */
     public function edit(Activite $activite)
     {
-        //
+       
     }
 
     /**
@@ -148,7 +150,16 @@ class ActiviteController extends Controller
      */
     public function update(Request $request, Activite $activite)
     {
-        //
+        $this->validate($request,[
+            'nom' =>'required',
+            'email' => 'required|string',
+            'telephone' => 'required',
+            'fonction' => 'required',
+            'structure_id' => 'required',
+        ]);
+
+        $activite->update($request->all());
+        return redirect()->route('activite.index')->with('success','Information mise à jour avec succès');
     }
 
     /**
@@ -161,6 +172,7 @@ class ActiviteController extends Controller
     {
         if ($activite) {
           $activite->delete();
+          return redirect()->route('activite.index')->with('success', 'Activité supprimée avec suucès');
 
         }
     }

@@ -58,7 +58,7 @@
         </div>
         <div class="col-6 col-lg-3">
             <div class="count-data text-center">
-                <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                <h6 class="count h2" data-to="150" data-speed="150">{{count($nbrActivite)}}</h6>
                 <p class="m-0px font-w-600">Activités Conjointes</p>
             </div>
         </div>
@@ -89,24 +89,27 @@
             </thead>
             <tbody>
                 <tr>
+                    @if ($structure_membres->count() > 0)
+
+
                     @foreach ($structure_membres as $member)
-                        <td>{{ ++$i }}</td>
+                        <td>{{ ++$num }}</td>
                         <td> {{ $member->nom }} </td>
                         <td>{{ $member->email }}</td>
                         <td>{{ $member->telephone }}</td>
-                        <td>{{ $member->fonction }}</td>
+                        <td>{{ $member->fonction->nom }}</td>
 
-                        <td class="d-flex justify-content-around">
-                            <a href="" class="btn btn-sm btn-primary" data-toggle="modal"
-                                data-target="#modalUpdate{{ $member->id }}"><i class="icon-pencil menu-icon"></i></a>
-                            <a href="" class="btn btn-sm btn-danger" title="Supprimer" data-toggle="modal"
-                                data-target="#modalDelete{{ $member->id }}"><i class="icon-trash menu-icon"></i></a>
+                    <td class="d-flex justify-content-around">
+                        <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalUpdate{{ $member->id }}"><i class="icon-pencil menu-icon"></i></a>
+                        <a href="" class="btn btn-sm btn-danger" title="Supprimer" data-toggle="modal" data-target="#modalDelete{{ $member->id }}"><i class="icon-trash menu-icon"></i></a>
 
 
                         </td>
                 </tr>
                 @endforeach
-
+                @else
+                <td colspan="6">Aucun membre</td>
+                @endif
 
             </tbody>
         </table>

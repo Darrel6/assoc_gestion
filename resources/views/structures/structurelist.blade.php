@@ -5,7 +5,7 @@
    fedSAEI - Liste des structures
 @endsection
 @section('title')
- Liste des Structures
+    Liste des Structures
 @endsection
 
 <style>
@@ -31,6 +31,9 @@
              </thead>
              <tbody>
                  <tr>
+                    @if ($structures->count() > 0)
+
+
                      @foreach ($structures as $structure)
                      <td> {{ $structure->id }} </td>
                      <td> {{ $structure->nom }} </td>
@@ -38,7 +41,13 @@
                      <td>{{ $structure->tel }}</td>
                      <td>{{ $structure->domaine_activite }}</td>
                      <td> {{ $structure->localisation}} </td>
-                     <td> {{ $structure->positionnement}} </td>
+                     <td> 
+                        @foreach ($position as $pos)
+
+                             <li>{{ $pos }}</li>
+                            
+                        @endforeach
+                     </td>
 
                      <td class="d-flex justify-content-around">
                         <a href="{{ route('detail') }}?id={{ Crypt::encrypt($structure->id) }}" class="btn btn-sm btn-info mr-2" ><i class="icon-eye menu-icon"></i></a>
@@ -51,7 +60,9 @@
                  @include('structures.editStructure')
                  @include('structures.deleteStructure')
                 @endforeach
-
+                @else
+                <td colspan="8">Aucune structure</td>
+                @endif
 
              </tbody>
          </table>

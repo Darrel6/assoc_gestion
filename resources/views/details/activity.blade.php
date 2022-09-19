@@ -13,6 +13,9 @@
     em {
         color: #4387F6
     }
+    .table thead th {
+        font-weight: bold;
+    }
 </style>
 <div class="container">
     <div class="row">
@@ -26,7 +29,7 @@
         </div>
         <div class="col">
             @foreach ($structure_membres as $dirigeant)
-                @if ($dirigeant->fonction == 'Dirigeant')
+                @if ($dirigeant->fonction->nom == 'Dirigeant')
                     <h4 class="dark-color">Nom du dirigeant : <em>{{ $dirigeant->nom }}</em></h4>
                     <h4 class="dark-color">Email : <em>{{ $dirigeant->email }}</em></h4>
                     <h4 class="dark-color">Téléphone : <em>{{ $dirigeant->telephone }}</em></h4>
@@ -35,7 +38,7 @@
         </div>
         <div class="col">
             @foreach ($structure_membres as $representant)
-                @if ($representant->fonction == 'Représentant')
+                @if ($representant->fonction->nom == 'Représentant')
                     <h4 class="dark-color">Nom du Représentant : <em>{{ $representant->nom }}</em></h4>
                     <h4 class="dark-color">Email : <em>{{ $representant->email }}</em></h4>
                     <h4 class="dark-color">Téléphone : <em>{{ $representant->telephone }}</em></h4>
@@ -47,34 +50,36 @@
 
 <div class="card mb-5 mt-3" style="border-radius: 10px">
     <div class="card-body">
-        <table class="table table-striped text-center">
+        <table class="table table-striped  text-center">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Nom </th>
                     <th>Date de l'évenement</th>
                     <th>Lieu de l'évenement</th>
+                    <th>Visuels</th>
                     <th>Description</th>
-                    <th>Actions</th>
+
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    @foreach ($activity_info as $activity)
-                        <td></td>
-                        <td> {{ $activity['nom'] }} </td>
-                        <td>{{ $activity['date_event'] }}</td>
-                        <td>{{ $activity['lieu'] }}</td>
-                        <td>{{ $activity['description'] }}</td>
-
-                        <td class="d-flex justify-content-around">
-                            <a href="" class="btn btn-sm btn-primary" data-toggle="modal"
-                                data-target="#modalUpdate{{ $activity['id'] }}"><i class="icon-pencil menu-icon"></i></a>
-                            <a href="" class="btn btn-sm btn-danger" title="Supprimer" data-toggle="modal"
-                                data-target="#modalDelete{{ $activity['id'] }}"><i class="icon-trash menu-icon"></i></a>
-
-
+                    @foreach ($activity_info as $activite)
+                        <td>{{ ++$num }}</td>
+                        <td> {{ $activite['nom'] }} </td>
+                        <td>{{ $activite['date_event'] }}</td>
+                        <td>{{ $activite['lieu'] }}</td>
+                        <td>
+                            @foreach ($activite['visuel'] as $visuel)
+                                            <div class="carousel-item active">
+                                               
+                                                <a href="{{ $visuel }}" data-fancybox="gallery" class="btn btn-sm btn-info mr-2"><i class="icon-eye menu-icon hover-shadow"></i></a>
+                                            </div>
+                                            @endforeach
+                            
                         </td>
+                        @include('admin.activite.showVisuel')
+                        <td>{{ $activite['description'] }}</td>
                 </tr>
                 @endforeach
 

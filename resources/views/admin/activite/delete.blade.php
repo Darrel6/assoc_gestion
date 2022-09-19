@@ -11,7 +11,7 @@
                     </button>
           </div>
           <div class="modal-body">
-            Voulez-vous supprimé <b>{{ $activite->nom }}</b>  ?
+            Voulez-vous supprimé <b>{{ $activite['nom'] }}</b>  ?
           </div>
           <div class="modal-footer">
           <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">{{ _('Annuler')}}</button>

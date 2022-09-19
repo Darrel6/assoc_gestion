@@ -28,13 +28,13 @@
                         placeholder="Entrer le numero de télephone">
                 </div>
                 <div class="form-group">
-                    <label for="exampleSelectGender">La fonction</label>
+                    <label for="exampleSelectGender">Fonction</label>
 
-                    <select class="form-control" id="exampleSelectGender" name="fonction">
-                        <option value="Dirigeant">Dirigeant</option>
-                        <option value="Comptable">Comptable</option>
-                        <option value="Sécrétaire">Sécrétaire</option>
-                        <option value="Représentant">Représentant</option>
+                    <select class="form-control" id="exampleSelectGender" name="fonction_id">
+                        
+                        @foreach ($fonctions as $fonction)
+                        <option value="{{ $fonction->id }}">{{ $fonction->nom }}</option>
+                        @endforeach
                     </select>
 
                 </div>

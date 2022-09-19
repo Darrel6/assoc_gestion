@@ -29,10 +29,10 @@
                                 <div class="form-group">
                                     <label for="exampleSelectGender">Fonction</label>
 
-                                    <select class="form-control" id="exampleSelectGender" name="fonction">
-                                        <option value="Directeur">Directeur</option>
-                                        <option value="Comptable">Comptable</option>
-                                        <option value="Sécrétaire">Sécrétaire</option>
+                                    <select class="form-control" id="exampleSelectGender" name="fonction_id">
+                                        @foreach ($fonctions as $fonction)
+                                        <option value="{{ $fonction->id }}">{{ $fonction->nom }}</option>
+                                        @endforeach
                                     </select>
 
                                 </div>

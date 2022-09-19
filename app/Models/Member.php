@@ -12,7 +12,7 @@ class Member extends Model
         'nom',
         'email',
         'telephone',
-        'fonction',
+        'fonction_id',
         'structure_id',
 
     ];
@@ -20,5 +20,8 @@ public function structure(){
     
     return $this->belongsTo(Structure::class);
 }
-
+public function fonction(){
+    
+    return $this->belongsTo(Fonction::class);
+}
 }

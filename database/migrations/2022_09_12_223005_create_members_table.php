@@ -18,7 +18,7 @@ class CreateMembersTable extends Migration
             $table->string('nom');
             $table->string('email')->unique();
             $table->string('telephone');
-            $table->string('fonction');
+            $table->foreignId('fonction_id');
             $table->foreignId('structure_id');
             $table->timestamps();
         });
