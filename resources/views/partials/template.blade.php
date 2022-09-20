@@ -147,33 +147,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('dashboard') }}">
                             <span class="menu-title">Dashboard</span>
-                            <i class="icon-screen-desktop menu-icon"></i>
+                           
                         </a>
                     </li>
                     <li class="nav-item nav-category"><span class="nav-link">Operations</span></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('add') }}">
                             <span class="menu-title">Ajouter une Structure</span>
-                            <i class="icon-people menu-icon"></i>
+                          
                         </a>
 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('activite.create')}}">
                             <span class="menu-title">Ajouter une activité</span>
-                            <i class="icon-user menu-icon"></i>
+                           
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('members.create')}}">
                             <span class="menu-title">Ajouter un membre</span>
-                            <i class="icon-user-follow menu-icon"></i>
+                           
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('fonctionView') }}">
                             <span class="menu-title">Ajouter une Fonction</span>
-                            <i class="icon-envelope-letter menu-icon"></i>
+                           
                         </a>
                     </li>
                     <li class="nav-item nav-category">
@@ -182,19 +182,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('listStructure') }}">
                             <span class="menu-title">Listes des structures</span>
-                            <i class="icon-layers menu-icon"></i>
+                          
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('members.index')}}">
                             <span class="menu-title">Listes des membres</span>
-                            <i class="icon-badge menu-icon"></i>
+                          
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('activite.index')}}">
                             <span class="menu-title">Listes des activités</span>
-                            <i class="icon-badge menu-icon"></i>
+                            
                         </a>
                     </li>
 
