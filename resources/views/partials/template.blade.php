@@ -231,34 +231,7 @@
     <script src="{{ asset('admin/js/misc.js') }}"></script>
     <script src="{{ asset('admin/js/typeahead.js') }}"></script>
     <script src="{{ asset('admin/js/select2.js') }}"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <script>
-        $(document).ready(function() {
-
-/* This is basic - uses default settings */
-
-$("a#single_image").fancybox();
-
-/* Using custom settings */
-
-$("a#inline").fancybox({
-    'hideOnContentClick': true
-});
-
-/* Apply fancybox to multiple items */
-
-$("a.group").fancybox({
-    'transitionIn'	:	'elastic',
-    'transitionOut'	:	'elastic',
-    'speedIn'		:	600, 
-    'speedOut'		:	200, 
-    'overlayShow'	:	false
-});
-
-});
-    </script>
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>   
 </body>
 
 </html>
