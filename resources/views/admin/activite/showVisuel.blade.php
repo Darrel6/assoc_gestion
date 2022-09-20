@@ -8,17 +8,17 @@
 Les visuels de l'évenement
 @endsection
 
-<div id="gallery-lightbox" class="row" data-toggle="modal" data-target="#exampleModal">
-    <div class="col p-0 d-flex justify-content-center">
+<div id="gallery-lightbox" class="row" >
+    <div class="col p-0  imag">
         @foreach ($activity_info as $activite)
         @foreach ($activite['visuel'] as $visuel)
             @if (pathinfo($visuel, PATHINFO_EXTENSION) == 'png' || pathinfo($visuel, PATHINFO_EXTENSION) == 'jpg' || pathinfo($visuel, PATHINFO_EXTENSION) == 'jpeg')
-                 <img src="{{ $visuel }}" alt="...">
+                 <img src="{{ $visuel }}" alt="..." class="thumbnail"> 
 
             @endif
             @if (pathinfo($visuel, PATHINFO_EXTENSION) == 'mp4')
 
-                        <video controls class="modal-content w-50">
+                        <video controls class="modal-content thumbnail">
                             <source src="{{ $visuel }}"
                             type="video/mp4">
                             <source src="{{ $visuel }}"
@@ -89,5 +89,24 @@ Les visuels de l'évenement
 #gallery-lightbox img:hover {
   opacity: 0.9;
   transition: 0.5s ease-out;
+}
+#gallery-lightbox video:hover {
+  opacity: 0.9;
+  transition: 0.5s ease-out;
+}
+.imag{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 10px
+}
+.thumbnail {
+  background-color: #f9bc0760;
+  border-radius:10px;
+  padding: 10px;
+}
+video.thumbnail {
+  background-color: #f9bc0760;
+  border-radius:10px;
+  padding: 10px;
 }
 </style>

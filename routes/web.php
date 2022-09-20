@@ -4,6 +4,7 @@ use App\Http\Controllers\ActiviteController;
 use App\Http\Controllers\FonctionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\StatistiqueController;
 use App\Http\Controllers\StructureController;
 
 /*
@@ -26,13 +27,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::put('/dashboard/update/{structure}', [StructureController::class, 'updateStructure'])->name("updateStructure");
     Route::delete('/dashboard/delete/{structure}', [StructureController::class, 'deleteStructure'])->name("deleteStructure");
     Route::get('/dashboard/detail', [StructureController::class, 'detail'])->name('detail');
-    Route::get('/dashboard/visuel', [StructureController::class, 'visuel'])->name('visuels');
     Route::get('/dashboard/detail/activity', [StructureController::class, 'detailActivity'])->name('detailActivity');
-
+    Route::get('/dashboard/visuel', [StructureController::class, 'visuel'])->name('visuels');
     //members
     Route::resource('members', MemberController::class);
     Route::resource('activite', ActiviteController::class);
-    
+
     //fonction
     Route::get('/dashboard/fonction/add', [FonctionController::class, 'index'])->name('fonctionView');
     Route::post('/dashboard/fonction/add', [FonctionController::class, 'store'])->name('addFonction');
@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 
 });
-Route::get('/', [StructureController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/', [StatistiqueController::class, 'statistique'])->middleware(['auth'])->name('dashboard');
 
 Route::fallback(function(){
     return view('404');

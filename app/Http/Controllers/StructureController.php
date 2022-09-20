@@ -155,7 +155,7 @@ class StructureController extends Controller
 
 
             $msg = [
-               
+                "idact"=>$activity->id,
                 "nom" => $activity->nom,
                 "date_event"=>$activity->date_event,
                 "lieu" => $activity->lieu,

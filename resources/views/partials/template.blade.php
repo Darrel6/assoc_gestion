@@ -11,7 +11,7 @@
 
 
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
     </script>
     <link rel="stylesheet" href="{{ asset('admin/vendors/simple-line-icons/css/simple-line-icons.css') }}">
@@ -70,6 +70,7 @@
 </head>
 
 <body>
+   
     <div class="container-scroller">
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -147,33 +148,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('dashboard') }}">
                             <span class="menu-title">Dashboard</span>
-                           
+
                         </a>
                     </li>
                     <li class="nav-item nav-category"><span class="nav-link">Operations</span></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('add') }}">
                             <span class="menu-title">Ajouter une Structure</span>
-                          
+
                         </a>
 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('activite.create')}}">
                             <span class="menu-title">Ajouter une activité</span>
-                           
+
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('members.create')}}">
                             <span class="menu-title">Ajouter un membre</span>
-                           
+
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('fonctionView') }}">
                             <span class="menu-title">Ajouter une Fonction</span>
-                           
+
                         </a>
                     </li>
                     <li class="nav-item nav-category">
@@ -182,19 +183,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('listStructure') }}">
                             <span class="menu-title">Listes des structures</span>
-                          
+
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('members.index')}}">
                             <span class="menu-title">Listes des membres</span>
-                          
+
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('activite.index')}}">
                             <span class="menu-title">Listes des activités</span>
-                            
+
                         </a>
                     </li>
 

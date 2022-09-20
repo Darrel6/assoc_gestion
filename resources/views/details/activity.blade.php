@@ -66,20 +66,96 @@
                 <tr>
                     @foreach ($activity_info as $activite)
                         <td>{{ ++$num }}</td>
-                        <td> {{ $activite['nom'] }} </td>
-                        <td>{{ $activite['date_event'] }}</td>
-                        <td>{{ $activite['lieu'] }}</td>
+                        <td class="desc"><a href="" data-toggle="modal" data-target="#modalnom{{ $activite['idact'] }}">Lire</a></td>
+                        <div class="modal fade" id="modalnom{{ $activite['idact'] }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalToggleLabel">Nom de l'évènement</h5>
+                                  <button type="button" class="close" data-dismiss="modal" arial-label="close">
+                                              <span aria-hidden="true">&times;</span>
+                                          </button>
+                                </div>
+                                <div class="modal-body">
+                                </p>{{ $activite['nom']  }} </p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">{{ _('Close')}}</button>
+                     
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <td class="desc"><a href="" data-toggle="modal" data-target="#modaldate{{ $activite['idact'] }}">Lire</a></td>
+                        <div class="modal fade" id="modaldate{{ $activite['idact'] }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalToggleLabel">Date de l'évènement</h5>
+                                  <button type="button" class="close" data-dismiss="modal" arial-label="close">
+                                              <span aria-hidden="true">&times;</span>
+                                          </button>
+                                </div>
+                                <div class="modal-body">
+                                </p>{{ date('le d/m/Y', strtotime($activite['date_event']))  }} </p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">{{ _('Close')}}</button>
+                     
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <td class="desc"><a href="" data-toggle="modal" data-target="#modalLieu{{ $activite['idact'] }}">Lire</a></td>
+                        <div class="modal fade" id="modalLieu{{ $activite['idact'] }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalToggleLabel">Lieu de l'évènement</h5>
+                                  <button type="button" class="close" data-dismiss="modal" arial-label="close">
+                                              <span aria-hidden="true">&times;</span>
+                                          </button>
+                                </div>
+                                <div class="modal-body">
+                                </p>{{ $activite['lieu'] }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">{{ _('Close')}}</button>
+                     
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         <td>
                             @foreach ($activite['visuel'] as $visuel)
                                             <div class="carousel-item active">
                                                
-                                                <a href="{{ $visuel }}" data-fancybox="gallery" class="btn btn-sm btn-info mr-2"><i class="icon-eye menu-icon hover-shadow"></i></a>
+                                                <a href="{{ route('visuels') }}?id={{ Crypt::encrypt($activite['idact']) }}"  class="btn btn-sm btn-info mr-2" ><i class="icon-eye menu-icon hover-shadow" onclick="openModal();currentSlide(1)"></i></a>
                                             </div>
                                             @endforeach
                             
                         </td>
-                        @include('admin.activite.showVisuel')
-                        <td>{{ $activite['description'] }}</td>
+                        
+                        <td class="desc"><a href="" data-toggle="modal" data-target="#modaldesc{{ $activite['idact'] }}">Lire</a></td>
+                        <div class="modal fade" id="modaldesc{{ $activite['idact'] }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalToggleLabel">Description</h5>
+                                  <button type="button" class="close" data-dismiss="modal" arial-label="close">
+                                              <span aria-hidden="true">&times;</span>
+                                          </button>
+                                </div>
+                                <div class="modal-body">
+                                 <p>{{ $activite['description'] }} </p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">{{ _('Close')}}</button>
+                     
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                 </tr>
                 @endforeach
 
