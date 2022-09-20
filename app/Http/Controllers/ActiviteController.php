@@ -34,7 +34,7 @@ class ActiviteController extends Controller
                     }
                     array_push($st,$data);
                 }
-            } 
+            }
 
             $r = [];
             if($st){
@@ -42,7 +42,7 @@ class ActiviteController extends Controller
                     array_push($r, $i[0]);
                 }
             }
-            
+
 
             $msg = [
                 "idact"=>$activity->id,
@@ -52,8 +52,8 @@ class ActiviteController extends Controller
                 "structures" => $r,
                 "visuel" =>json_decode($activity->visuel),
                 "description" => $activity->description,
-            ]; 
-           
+            ];
+
             array_push($activites, $msg);
 
         }
@@ -138,7 +138,7 @@ class ActiviteController extends Controller
      */
     public function edit(Activite $activite)
     {
-       
+
     }
 
     /**
@@ -150,12 +150,13 @@ class ActiviteController extends Controller
      */
     public function update(Request $request, Activite $activite)
     {
-        $this->validate($request,[
-            'nom' =>'required',
-            'email' => 'required|string',
-            'telephone' => 'required',
-            'fonction' => 'required',
+        $this->validate($request, [
+            'nom' => 'required',
+            'date_event' => 'required',
+            'lieu' => 'required',
+            'visuel' ,
             'structure_id' => 'required',
+            'description' => 'required',
         ]);
 
         $activite->update($request->all());

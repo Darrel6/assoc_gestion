@@ -42,15 +42,15 @@ fedSAEI - Activité
 
                     <td> </td>
                     <td> {{ $activite['nom'] }} </td>
-                    <td>{{ $activite['date_event'] }} </td>
+                    <td>{{ date('d-m-Y', strtotime($activite['date_event']))  }} </td>
                     <td>{{ $activite['lieu'] }}</td>
                     <td>
                         @if ($activite['structures'])
-                       
+
                             @foreach ($activite['structures'] as $item)
                             <li>{{ $item }}</li>
                             @endforeach
-                        
+
                         @else
                         <span class="badge rounded-pill bg-primary">
                             Bientot disponible
@@ -59,26 +59,25 @@ fedSAEI - Activité
                     </td>
 
                     <td>
-                       
+
                         <a href="{{ route('visuels') }}?id={{ Crypt::encrypt($activite['idact']) }}"  class="btn btn-sm btn-info mr-2" ><i class="icon-eye menu-icon hover-shadow" onclick="openModal();currentSlide(1)"></i></a>
-                       
+
                     </td>
-                    
-               
+
+
                     <td>{{ $activite['description'] }}</td>
                     <td class="d-flex justify-content-around ">
-                        <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalUpdate{{ $activite['idact'] }}"><i class="icon-pencil menu-icon"></i></a>
                         <a href="" class="btn btn-sm btn-danger" title="Supprimer" data-toggle="modal" data-target="#modalDelete{{ $activite['idact'] }}"><i class="icon-trash menu-icon"></i></a>
                     </td>
                 </tr>
-                
+
+                @include('admin.activite.delete')
+                 @include('admin.activite.edit')
                 @endforeach
                 @else
                 <td colspan="7">Aucune activité</td>
                 @endif
-                
-                @include('admin.activite.delete')
-                 @include('admin.activite.edit')
+
             </tbody>
         </table>
 
