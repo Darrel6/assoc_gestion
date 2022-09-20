@@ -10,6 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    </script>
     <link rel="stylesheet" href="{{ asset('admin/vendors/simple-line-icons/css/simple-line-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendors/css/vendor.bundle.base.css') }}">
@@ -28,9 +32,10 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}" />
     <link rel="shortcut icon" href="{{ asset('pictures/favi.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
-    <link rel="stylesheet" href="libs/fancybox/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
 
     <!-- select2 -->
+
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
      <!-- sweet alert -->
@@ -140,7 +145,7 @@
                         <span class="nav-link">Dashboard</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('dashboard') }}">
                             <span class="menu-title">Dashboard</span>
                             <i class="icon-screen-desktop menu-icon"></i>
                         </a>
@@ -226,7 +231,33 @@
     <script src="{{ asset('admin/js/misc.js') }}"></script>
     <script src="{{ asset('admin/js/typeahead.js') }}"></script>
     <script src="{{ asset('admin/js/select2.js') }}"></script>
-    <script src="libs/fancybox/js/jquery.fancybox.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script>
+        $(document).ready(function() {
+
+/* This is basic - uses default settings */
+
+$("a#single_image").fancybox();
+
+/* Using custom settings */
+
+$("a#inline").fancybox({
+    'hideOnContentClick': true
+});
+
+/* Apply fancybox to multiple items */
+
+$("a.group").fancybox({
+    'transitionIn'	:	'elastic',
+    'transitionOut'	:	'elastic',
+    'speedIn'		:	600, 
+    'speedOut'		:	200, 
+    'overlayShow'	:	false
+});
+
+});
+    </script>
 
 </body>
 

@@ -179,6 +179,65 @@ class StructureController extends Controller
         
         return view('details.activity', compact("activity_info","num","structure_membres","structures"));
     }
+    public function visuel(Request $request)
+    
+    {
+        
+        $i = 0;
+        $id = Crypt::decrypt($request->get('id'));
+        $act = Activite::all();
+        $structures = Structure::where('id',$id)->get();
+        $activites = [];
+        foreach($act as $activity){
+            $sIdDecode = json_decode($activity->structure_id);
+
+            $st = [];
+            foreach ($sIdDecode as $sId) {
+                $getStructure = Structure::where(["id"=>$sId])->get('id');
+
+                if($getStructure->count()>0){
+                    $data = [];
+                    foreach($getStructure as $sName){
+                        $name = $sName['id'];
+                        if($name){
+                            array_push($data, $name);
+                        }
+                    }
+                    array_push($st,$data);
+                }
+            }
+
+            $r = [];
+            if($st){
+                foreach($st as $i){
+                    array_push($r, $i[0]);
+                }
+            }
+
+
+            $msg = [
+               
+                "nom" => $activity->nom,
+                "date_event"=>$activity->date_event,
+                "lieu" => $activity->lieu,
+                "structures" => $r,
+                "visuel" =>json_decode($activity->visuel),
+                "description" =>$activity->description
+            ];
+
+            array_push($activites, $msg);
+
+        }
+        $activity_info = [];
+        foreach ($activites as $act) {
+            foreach ($act['structures'] as $struc) {
+                if ($struc == $id) {
+                    array_push($activity_info , $act);
+               }
+            }
+        }
+        return view('admin.activite.showVisuel',compact("activity_info","i","structures"));
+    }
     /**
      * Show the form for creating a new resource.
      *

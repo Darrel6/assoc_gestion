@@ -59,9 +59,12 @@ fedSAEI - Activité
                     </td>
 
                     <td>
-                        <a href="" data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-info mr-2"><i class="icon-eye menu-icon hover-shadow" onclick="openModal();currentSlide(1)"></i></a>
+                       
+                        <a href="{{ route('visuels') }}?id={{ Crypt::encrypt($activite['idact']) }}"  class="btn btn-sm btn-info mr-2" ><i class="icon-eye menu-icon hover-shadow" onclick="openModal();currentSlide(1)"></i></a>
+                       
                     </td>
-                    @include('admin.activite.showVisuel')
+                    
+               
                     <td>{{ $activite['description'] }}</td>
                     <td class="d-flex justify-content-around ">
                         <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalUpdate{{ $activite['idact'] }}"><i class="icon-pencil menu-icon"></i></a>
