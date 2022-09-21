@@ -34,26 +34,12 @@ class StructureController extends Controller
         $structure_membres = Member::where('structure_id',$id)->paginate(10);
         $structure_membres->appends(['id'=>$id])->render();
         $structures = Structure::where('id',$id)->get();
-       
-        
 
 
 
-        /* $structure = Structure::where('id',$id)->get();
 
-        foreach ($structure as $strure) {
-            $active = Activite::all();
 
-            foreach ($active as $active) {
-                $structDecode = json_decode($active->structure_id);
-                foreach ($structDecode as $decod) {
-                   $nomb = Activite::where('structure_id',$decod)->get();
-                   dd($nomb);
-                }
-            }
 
-        }
- */
 
         $i = 0;
         $num = '';
@@ -105,7 +91,7 @@ class StructureController extends Controller
                }
             }
         }
-        
+
 
 
 
@@ -118,12 +104,12 @@ class StructureController extends Controller
         $i='';
         $id = Crypt::decrypt($request->get('id'));
         $structure_membres = Member::where('structure_id',$id)->paginate(10);
-       
+
         $structures = Structure::where('id',$id)->get();
-       
-       
-    
-        $num = ''; 
+
+
+
+        $num = '';
         $i = 0;
         $act = Activite::all();
         $activites = [];
@@ -175,14 +161,14 @@ class StructureController extends Controller
                }
             }
         }
-        
-        
+
+
         return view('details.activity', compact("activity_info","num","structure_membres","structures"));
     }
     public function visuel(Request $request)
-    
+
     {
-        
+
         $i = 0;
         $id = Crypt::decrypt($request->get('id'));
         $act = Activite::all();
@@ -216,7 +202,7 @@ class StructureController extends Controller
 
 
             $msg = [
-               
+                "id"=> $activity->id,
                 "nom" => $activity->nom,
                 "date_event"=>$activity->date_event,
                 "lieu" => $activity->lieu,
@@ -230,12 +216,13 @@ class StructureController extends Controller
         }
         $activity_info = [];
         foreach ($activites as $act) {
-            foreach ($act['structures'] as $struc) {
-                if ($struc == $id) {
-                    array_push($activity_info , $act);
-               }
-            }
-        }
+
+
+            if ($act['id'] == $id) {
+                array_push($activity_info , $act);
+           }
+
+    }
         return view('admin.activite.showVisuel',compact("activity_info","i","structures"));
     }
     /**
@@ -265,7 +252,7 @@ class StructureController extends Controller
             'localisation' => 'required',
             'positionnement' => 'required',
         ]);
-     
+
         Structure::create([
             'nom' => $request->nom,
             'email' => $request->email,
@@ -274,7 +261,7 @@ class StructureController extends Controller
             'localisation' => $request->localisation,
             'positionnement' => json_encode($request->positionnement),
         ]);
-        
+
         return redirect()->route('add')->with('success','Structure enrégistrer avec succès');
     }
 
@@ -286,12 +273,9 @@ class StructureController extends Controller
      */
     public function show(Structure $structure)
     {
-        $structures = Structure::orderby('id', 'asc')->paginate(10);
-        foreach($structures as $structure){
-            $position = json_decode($structure->positionnement);
-            
-        }
-        return view('structures.structurelist', compact('structures','position'));
+         $structures = Structure::orderby('id', 'asc')->paginate(10);
+
+        return view('structures.structurelist', compact('structures'));
     }
 
     /**
