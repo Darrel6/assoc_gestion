@@ -21,8 +21,7 @@ Les visuels de l'évenement
                         <video controls class="modal-content thumbnail">
                             <source src="{{ $visuel }}"
                             type="video/mp4">
-                            <source src="{{ $visuel }}"
-                            type="video/mp4">
+                           
                         </video>
                 </div>
             @endif
@@ -33,37 +32,7 @@ Les visuels de l'évenement
   </div>
   
   
-  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <button type="button" class="close m-0 p-3 text-white position-absolute right-0" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-    <div class="modal-dialog " role="document">
-      <div class="modal-content bg-transparent">
-        <div class="modal-body p-0">
-          <div>
-            
-            @foreach ($activity_info as $activite)
-                @foreach ($activite['visuel'] as $visuel)
-                <div class="">
-                    @if (pathinfo($visuel, PATHINFO_EXTENSION) == 'png' || pathinfo($visuel, PATHINFO_EXTENSION) == 'jpg' || pathinfo($visuel, PATHINFO_EXTENSION) == 'jpeg' )
-                        <div class="col">
-                            <a href="#" class="thumbnail">
-                                <img src="{{ $visuel }}" alt="...">
-                            </a>
-                        </div>
-                    @endif
-                </div>
-                @endforeach     
-                @endforeach  
-              
-              
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
   
   
 @endsection
@@ -74,7 +43,7 @@ Les visuels de l'évenement
 }
   
 #gallery-lightbox img {
-    width: 500px;
+  width: 500px;
   height: 350px;
   object-fit: fill;
   cursor: pointer;
@@ -96,8 +65,8 @@ Les visuels de l'évenement
 }
 .imag{
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  grid-gap: 10px
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 50px
 }
 .thumbnail {
   background-color: #f9bc0760;

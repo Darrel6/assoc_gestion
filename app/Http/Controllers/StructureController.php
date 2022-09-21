@@ -186,7 +186,7 @@ class StructureController extends Controller
         $i = 0;
         $id = Crypt::decrypt($request->get('id'));
         $act = Activite::all();
-        $structures = Structure::where('id',$id)->get();
+        $structures = Activite::where('id',$id)->get();
         $activites = [];
         foreach($act as $activity){
             $sIdDecode = json_decode($activity->structure_id);

@@ -37,12 +37,12 @@
                      <td> {{ $structure->nom }} </td>
                     
 
-                     <td ><a href="" data-toggle="modal" data-target="#modalpos{{ $structure->id }}">Lire</a></td>
-                     <div class="modal fade" id="modalpos{{ $structure->id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                     <td ><a href="" data-toggle="modal" data-target="#modaldomaine{{ $structure->id }}">Lire</a></td>
+                     <div class="modal fade" id="modaldomaine{{ $structure->id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                          <div class="modal-dialog modal-dialog-centered">
                            <div class="modal-content">
                              <div class="modal-header">
-                               <h5 class="modal-title" id="exampleModalToggleLabel">Description</h5>
+                               <h5 class="modal-title" id="exampleModalToggleLabel">Domaine d'activité</h5>
                                <button type="button" class="close" data-dismiss="modal" arial-label="close">
                                            <span aria-hidden="true">&times;</span>
                                        </button>
@@ -58,12 +58,12 @@
                            </div>
                          </div>
                        </div>
-                     <td ><a href="" data-toggle="modal" data-target="#modalpos{{ $structure->id }}">Lire</a></td>
-                     <div class="modal fade" id="modalpos{{ $structure->id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                     <td ><a href="" data-toggle="modal" data-target="#modalLocation{{ $structure->id }}">Lire</a></td>
+                     <div class="modal fade" id="modalLocation{{ $structure->id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                          <div class="modal-dialog modal-dialog-centered">
                            <div class="modal-content">
                              <div class="modal-header">
-                               <h5 class="modal-title" id="exampleModalToggleLabel">Description</h5>
+                               <h5 class="modal-title" id="exampleModalToggleLabel">Localisation</h5>
                                <button type="button" class="close" data-dismiss="modal" arial-label="close">
                                            <span aria-hidden="true">&times;</span>
                                        </button>
@@ -85,7 +85,7 @@
                          <div class="modal-dialog modal-dialog-centered">
                            <div class="modal-content">
                              <div class="modal-header">
-                               <h5 class="modal-title" id="exampleModalToggleLabel">Description</h5>
+                               <h5 class="modal-title" id="exampleModalToggleLabel">Positionnement</h5>
                                <button type="button" class="close" data-dismiss="modal" arial-label="close">
                                            <span aria-hidden="true">&times;</span>
                                        </button>
