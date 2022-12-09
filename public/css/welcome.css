@@ -1,0 +1,49 @@
+.body{
+    overflow: hidden;
+    font-family: Ubuntu;
+    height:"100vh";
+}
+.img-fluid{
+    height:"100vh";
+}
+.text{
+    padding-top: 100px;
+}
+.text a{
+    background-color: #fabd04;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 15px 45px;
+    border-radius: 15px;
+}
+.text a:hover{
+    background-color: #4387f6;
+    color: white;
+    transition: 0.75s;
+  
+}
+
+.title{
+    padding: 70px 0;
+}
+.title h1{
+    font-size: 50px;
+}
+@media (min-width: 200px) and (max-width: 319.98px){ 
+    .option{
+        margin: 103px 0;
+    }
+    .title h1{
+        font-size: 20px;
+    }
+ }
+@media (min-width: 320px) and (max-width: 564.98px){ 
+    .option{
+        margin: 103px 0;
+    }
+    .title h1{
+        font-size: 30px;
+    }
+ }
