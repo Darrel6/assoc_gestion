@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActiviteController;
 use App\Http\Controllers\FonctionController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\StatistiqueController;
@@ -42,6 +43,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 });
 Route::get('/', [StatistiqueController::class, 'statistique'])->middleware(['auth'])->name('dashboard');
+
+Route::get('/', [HomeController::class, 'welcome'])->name('home');
 
 Route::fallback(function(){
     return view('404');
