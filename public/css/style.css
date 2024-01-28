@@ -1,0 +1,268 @@
+@charset 'utf-8';
+
+@font-face {
+    font-family: 'HankenGrotesk-Regular';
+    src: url(./fonts/Hanken_Grotesk/static/HankenGrotesk-Regular.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'HankenGrotesk-SemiBold';
+    src: url(./fonts/Hanken_Grotesk/static/HankenGrotesk-SemiBold.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'FontsFree-Net-sf-ui-text-regular-58646b56a688c';
+    src: url(./fonts/FontsFree-Net-sf-ui-text-regular-58646b56a688c.ttf) format(truetype);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 1, 2rem;
+}
+
+p,
+li {
+    line-height: 30px;
+}
+
+nav {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+img {
+    object-fit: cover;
+    aspect-ratio: 16/9;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+#navbarText ul {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.contact-modal {
+    z-index: 100 !important;
+}
+
+.modal-backdrop {
+    pointer-events: none;
+}
+
+.banner {
+    background-image: url("/images/image4.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner::before {
+    background-color: rgba(128, 128, 128, 0.635);
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+}
+
+.banner-content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.barre {
+    height: 1px;
+    width: 100%;
+    background-color: beige;
+}
+
+.content h3 {
+    font-weight: 600;
+    font-size: 45px;
+    color: beige;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 10px 0 50px 0;
+}
+
+.banner-link {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-link .btn {
+    font-size: 18px;
+    padding: 8px 28px;
+    font-weight: bold;
+}
+
+.banner-img {
+    max-width: 400px;
+
+}
+
+.banner-img img {
+    width: 100%;
+    height: auto;
+}
+
+.partner-display {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+}
+
+.partner-display img {
+    width: 80%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+}
+
+.section-text {
+    color: #302a64;
+    font-weight: 700;
+    font-size: 35px;
+}
+
+.margin {
+    margin-bottom: 25px;
+}
+
+.feature {
+    background-color: rgba(19, 8, 8, 0.744);
+    padding: 100px 0;
+    color: white;
+}
+
+.feature-left {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    margin-bottom: 70px;
+}
+
+.li {
+    list-style: circle;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgb(61, 125, 177);
+}
+
+
+.feature-left-img img {
+    height: auto;
+    max-width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.addto-newsletter {
+    margin: 70px 0;
+
+}
+
+.addto-newsletter h4,
+.form-group label {
+    color: white;
+}
+
+.form-width {
+    margin: 9px 0 35px 0;
+}
+
+footer {
+    background-color: #15172a;
+    padding: 50px 0;
+}
+
+.footer-info h3 {
+    color: rgb(214, 183, 23);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-info p {
+    color: white;
+}
+
+.footer-text li {
+    color: white;
+}
+
+.social-links {
+    gap: 30px;
+}
+
+.footer-img img,
+.social-links a i {
+    filter: contrast(0%) brightness(200%);
+}
+
+
+@media (max-width: 995px) {
+    * {
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 995px) {
+        * {
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 995px) {
+            * {
+                overflow-x: hidden;
+                box-sizing: border-box;
+            }
+
+            .footer-img img,
+            .description-img img {
+                max-width: calc(100%);
+            }
+
+            .content h3 {
+                font-size: 25px;
+            }
+
+            .banner-link .btn {
+                font-size: 16px;
+                padding: 4;
+
+            }
+
+        }
+
+    }
+
+
+}
