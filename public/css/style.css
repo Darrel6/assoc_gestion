@@ -25,7 +25,10 @@
 
 p,
 li {
-    line-height: 30px;
+    line-height: 35px;
+    font-size: 18px;
+    font-family: 'HankenGrotesk-SemiBold', sans-serif;
+
 }
 
 nav {
@@ -35,8 +38,13 @@ nav {
 }
 
 img {
-    object-fit: cover;
+    object-fit: cover !important;
     aspect-ratio: 16/9;
+}
+
+img,
+svg {
+    vertical-align: middle;
 }
 
 .bold {
@@ -116,7 +124,6 @@ img {
 
 .banner-img {
     max-width: 400px;
-
 }
 
 .banner-img img {
@@ -133,7 +140,7 @@ img {
 .partner-display img {
     width: 80%;
     aspect-ratio: 16/9;
-    object-fit: contain;
+    object-fit: contain !important;
 }
 
 .section-text {
@@ -141,6 +148,7 @@ img {
     font-weight: 700;
     font-size: 35px;
 }
+
 
 .margin {
     margin-bottom: 25px;
@@ -165,9 +173,15 @@ img {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgb(61, 125, 177);
+    background-color: black;
+    padding: 40px;
+    border-radius: 35px;
 }
 
+#partner h2 {
+    font-weight: bold;
+    font-size: 40px;
+}
 
 .feature-left-img img {
     height: auto;
@@ -209,8 +223,13 @@ footer {
     justify-content: space-evenly;
 }
 
-.footer-info p {
+.footer-info p,
+.footer-info a {
     color: white;
+}
+
+.footer-info a:hover {
+    color: grey;
 }
 
 .footer-text li {
