@@ -34,6 +34,7 @@ nav {
     background-color: white;
 }
 
+
 img {
     object-fit: cover;
     aspect-ratio: 16/9;
@@ -138,8 +139,8 @@ img {
 
 .section-text {
     color: #302a64;
-    font-weight: 700;
-    font-size: 35px;
+    font-weight: 900;
+    font-size: 45px;
 }
 
 .margin {
@@ -165,7 +166,8 @@ img {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgb(61, 125, 177);
+    background-color: rgb(10, 10, 10);
+    padding: 30px;
 }
 
 
@@ -224,6 +226,10 @@ footer {
 .footer-img img,
 .social-links a i {
     filter: contrast(0%) brightness(200%);
+}
+footer a{
+    color: white;
+    text-decoration: none;
 }
 
 

@@ -19,7 +19,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="exampleModalLabel">contactez-nous</h2>
+                    <h2 class="modal-title fs-5 mx-4" id="exampleModalLabel">contactez-nous</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -56,20 +56,20 @@
                 <div class="collapse navbar-collapse " id="navbarText">
                     <ul class="navbar-nav float-end">
                         <li class="nav-item">
-                            <a class="nav-link bold" href="#a_propos">A propos</a>
+                            <a class="nav-link bold mx-4" href="#a_propos">A propos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bold" href="#">Emission</a>
+                            <a class="nav-link bold mx-4" href="#">Emission</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bold" href="#">Calendrier</a>
+                            <a class="nav-link bold mx-4" href="#">Calendrier</a>
                         </li>
                         <li class="nav-item contact-modal">
                             <a type="button" class="nav-link bold" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-primary bold" href="https://www.digiboost.bj/fr"
+                            <a class="btn btn-primary bold mx-4" href="https://www.digiboost.bj/fr"
                                 target="_blank">Ecosystème</a>
                         </li>
                     </ul>
@@ -97,7 +97,7 @@
                             </div>
                             <div class="banner-link mt-5">
                                 <button type="button" class="btn btn-primary  ">Adhérer à la FedSAEI</button>
-                                <button type="button" class="btn btn-secondary ">demande d'accompagnement</button>
+                                <button type="button" class="btn btn-secondary ">Demande d'Appuie</button>
                             </div>
                         </div>
                     </div>
@@ -261,15 +261,15 @@
                 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <video src="{{ asset('video/Capture vidéo du 24-11-2023 17:32:25.webm') }}" autoplay loop
+                            <video src="{{ asset('video/Capture vidéo du 24-11-2023 17:32:25.webm') }}" controls 
                                 width="100%"></video>
                         </div>
                         <div class="carousel-item">
-                            <video src="{{ asset('video/Capture vidéo du 24-11-2023 17:32:25.webm') }}" controls loop
+                            <video src="{{ asset('video/Capture vidéo du 24-11-2023 17:32:25.webm') }}" controls 
                                 width="100%"></video>
                         </div>
                         <div class="carousel-item">
-                            <video src="{{ asset('video/Capture vidéo du 24-11-2023 17:32:25.webm') }}" controls loop
+                            <video src="{{ asset('video/Capture vidéo du 24-11-2023 17:32:25.webm') }}" controls 
                                 width="100%"></video>
                         </div>
                     </div>
@@ -346,8 +346,8 @@
                         </p>
                         <h3>Contact</h3>
                         <p>
+                            <strong>Code postal: </strong>03 BP 2279 <br>
                             <i class="fas fa-phone"></i> : (+229) 66013636 /43630000 <br>
-                            03 BP : 2279 <br>
                             <i class="fas fa-envelope"></i> :
                             <a href="mailto:fedsaei@gmail.com"> fedsaei@gmail.com</a> |
                             <a href="mailto:contact@fedsaei.bj"> contact@fedsaei.bj</a>
