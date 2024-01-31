@@ -172,7 +172,11 @@ svg {
     list-style: circle;
 }
 
-
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
+    padding: 40px;
+}
 
 #partner h2 {
     font-weight: bold;
