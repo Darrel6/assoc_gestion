@@ -45,6 +45,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 Route::get('/', [StatistiqueController::class, 'statistique'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/', [HomeController::class, 'welcome'])->name('home');
+Route::post('/news', [HomeController::class, 'store'])->name('suscribeNews');
+
 
 Route::fallback(function(){
     return view('404');

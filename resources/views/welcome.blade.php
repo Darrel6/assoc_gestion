@@ -43,6 +43,22 @@
     </div>
 
     <header class="fixed-top">
+    @if (session('errors'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul><br>
+                    <br><li>{{session('errors')}}</li><br/>
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <ul><br>
+                    <br><li>{{session('success')}}</li><br/>
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    @endif
         <nav class="navbar navbar-expand-lg ">
             <div class="container-sm nav">
                 <a class="navbar-brand" href="#">
@@ -356,13 +372,13 @@
                 </div>
                 <div class="addto-newsletter ">
                     <h4>Inscrivez-vous à notre newsletter</h4>
-                    <form action="/newsletter/subscribe" method="post">
+                    <form action="{{route('suscribeNews')}}" method="POST">
+                    @csrf 
                         <div class="form-group">
                             <label for="email">Votre adresse e-mail</label>
-                            <input type="email" class="form-control form-width" id="" name="email"
-                                required>
+                            <input type="email" name="email" id="email" class="form-control form-width" placeholder="email@email.com">
                         </div>
-                        <button type="submit" class="btn btn-secondary">S'inscrire</button>
+                        <button type="submit" class="btn btn-primary">  S'inscrire </button>
                     </form>
                 </div>
             </div>
