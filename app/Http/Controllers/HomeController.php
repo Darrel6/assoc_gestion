@@ -20,9 +20,9 @@ class HomeController extends Controller
         $email = $request->email;  // Assuming email is stored in request->email
     
     
-        if (! Newsletter::isSubscribed($email)) {
+        if (!Newsletter::isSubscribed($email)) {
             Newsletter::subscribePending($request->email);
-            
+            Newsletter::subscribe($email);
             return view('welcome')->with('success', 'Email address is subscribed');
     
         } else {
